@@ -10,10 +10,10 @@ class MapTest(unittest.TestCase):
 
         self.assertTrue(callable(instance.get_map))
         self.assertTrue(isinstance(instance.get_map(), dict))
-    
+
     def test_resolve_identity(self):
         instance = Map(Any)
-        
+
         self.assertEqual(5, instance.resolve(5))
         self.assertEqual('5', instance.resolve('5'))
         self.assertEqual('test_value', instance.resolve('test_value'))
@@ -27,7 +27,7 @@ class MapTest(unittest.TestCase):
         }
 
         instance = Map(Any)
-        
+
         self.assertEqual(5, instance.resolve('5'))
         self.assertEqual('5', instance.resolve(5))
         self.assertEqual('TEST_VALUE', instance.resolve('test_value'))
@@ -41,7 +41,7 @@ class MapTest(unittest.TestCase):
         }
 
         instance = Map(Any)
-        
+
         self.assertEqual('five', instance.resolve('5'))
         self.assertEqual(10, instance.resolve(5))
         self.assertEqual('test_value', instance.resolve('test_value'))
@@ -55,7 +55,7 @@ class MapTest(unittest.TestCase):
         }
 
         instance = Map(Any)
-        
+
         self.assertEqual(5, instance.resolve('5'))
         self.assertEqual(10, instance.resolve(5))
         self.assertEqual('test_value', instance.resolve('test_value'))
@@ -72,7 +72,7 @@ class MapTest(unittest.TestCase):
         self.assertEqual(5, instance.resolve(5))
         self.assertEqual('value_1', instance.resolve('0'))
         self.assertEqual('value_2', instance.resolve('1'))
-        
+
 
 class NestedTest(unittest.TestCase):
 
@@ -80,7 +80,7 @@ class NestedTest(unittest.TestCase):
         class TestMapObject(MapObject):
             test_field_1 = Any()
             test_field_2 = Any(param='test_param_2')
-        
+
         nested_field = Nested(TestMapObject)
 
         instance = nested_field.resolve({
@@ -98,7 +98,7 @@ class NestedTest(unittest.TestCase):
 
 
 class ListTest(unittest.TestCase):
-    
+
     def test_resolve_scalars_identity(self):
         instance = List(Any)
 

@@ -128,7 +128,7 @@ class MapObjectTest(unittest.TestCase):
 
             def resolve_test_field_3(self, value, parameters):
                 return parameters.get('test_param_3') + '_the_resolver'
-        
+
         class TestMap(MapObject):
             test_nested = Nested(NestedMap)
 
@@ -138,7 +138,7 @@ class MapObjectTest(unittest.TestCase):
 
         self.assertEqual('test_default_1', instance.test_nested.test_field_2)
         self.assertEqual('modified_by_the_resolver', instance.test_nested.test_field_3)
-    
+
     def test_resolvers_mro_top_to_bottom(self):
         mro = []
 
@@ -150,7 +150,7 @@ class MapObjectTest(unittest.TestCase):
 
             def resolve_test_field_2(self, value, parameters):
                 mro.append(2)
-            
+
             def resolve_test_field_3(self, value, parameters):
                 mro.append(3)
 
@@ -169,7 +169,7 @@ class MapObjectTest(unittest.TestCase):
 
             def resolve_test_field_3(self, value, parameters):
                 return parameters.get('test_param_3') + '_the_resolver'
-        
+
         class TestMap(MapObject):
             test_nested = Nested(NestedMap)
 
@@ -178,13 +178,13 @@ class MapObjectTest(unittest.TestCase):
         })
 
         self.assertEqual('modified_by_the_resolver', instance.test_nested.test_field_3)
-    
+
     def test_to_dict(self):
         class DoubleNested(MapObject):
             test_field_1 = Any(default='test_default_1')
             test_field_2 = Any(param='test_param_2', default='test_default_2')
 
-    
+
         class NestedMap(MapObject):
             test_field_1 = Any(default='test_default_1')
             test_field_2 = Any(param='test_param_2')
@@ -198,14 +198,14 @@ class MapObjectTest(unittest.TestCase):
 
             def resolve_test_field_3(self, value, parameters):
                 return parameters.get('test_param_3') + '_the_resolver'
-            
+
             def resolve_test_field_4(self, value, parameters):
                 return [
                     'list_item_1',
                     'list_item_2',
                     'list_item_3',
                 ]
-        
+
         class TestMap(MapObject):
             test_nested = Nested(NestedMap)
 

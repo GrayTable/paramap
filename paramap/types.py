@@ -254,7 +254,7 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             return value
 
         return self.__class__(parameters=value)
-    
+
     def clean(self, value):
         """Cleans value
 

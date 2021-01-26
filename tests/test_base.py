@@ -45,7 +45,7 @@ class DeclarativeFieldsMetaclassTest(unittest.TestCase):
             not_registered = 'this_field_should_not_be_registered'
             test_field_1 = BaseType()
             test_field_2 = BaseType()
-        
+
         class ChildClass(ParentClass):
             test_field_1 = None
 

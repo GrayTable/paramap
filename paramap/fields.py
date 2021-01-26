@@ -15,7 +15,7 @@ class Nested(BaseField):
     """
     def __init__(self, type_class, *args, **kwargs):
         assert issubclass(type_class, types.MapObject), 'Nested fields must resolve with `MapObject` type_class'
-        
+
         super(Nested, self).__init__(type_class, *args, **kwargs)
 
 

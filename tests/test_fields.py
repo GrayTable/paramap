@@ -6,7 +6,7 @@ class FieldTest(unittest.TestCase):
 
     def test_attrs(self):
         field = Any()
-        
+
         self.assertTrue(hasattr(field, 'param'))
         self.assertTrue(hasattr(field, 'default'))
 
@@ -21,7 +21,7 @@ class FieldTest(unittest.TestCase):
 
         self.assertEqual(5, field.resolve(5))
         self.assertEqual('test_value', field.resolve('test_value'))
-    
+
     def test_resolve_to_default(self):
         field = Any(default='test_default')
 
