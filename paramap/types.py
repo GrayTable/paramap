@@ -1,5 +1,8 @@
-from .base import BaseType, DeclarativeFieldsMetaclass
 from functools import partial
+from collections import OrderedDict
+
+from .base import BaseType, DeclarativeFieldsMetaclass
+
 
 class AnyType(BaseType):
     """
@@ -166,7 +169,7 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
         # Pending resolvers are used after all other values
         # have been set, to make it possible to use them
         # in the resolver function body
-        pending_resolvers = {}
+        pending_resolvers = OrderedDict()
 
         for key, field in self.base_fields.items():
             # traverse base fields and initialize values
