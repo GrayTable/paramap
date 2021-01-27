@@ -1,5 +1,6 @@
 from collections import OrderedDict
 
+
 class BaseType(object):
     """
     Represents base type class that resolves values with identity.
