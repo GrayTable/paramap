@@ -1,0 +1,508 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Fields" href="fields.html" />
+
+    <meta name="generator" content="sphinx-3.4.3, furo 2020.12.30.beta24"/>
+        <title>Class Reference - Paramap documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=33d2fc4f3f180ec1ffc6524e273e21d7d58cbe49">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=26485485040e7aaf717c13fd0188a5ad2c2deb60">
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script defer="defer" src="_static/jquery.js"></script>
+    <script defer="defer" src="_static/underscore.js"></script>
+    <script defer="defer" src="_static/doctools.js"></script>
+    <script defer src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Paramap  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Paramap  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fields.html">Fields</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Class Reference</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="class-reference">
+<h1>Class Reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-paramap.base">
+<span id="paramap-base-module"></span><h2>paramap.base module<a class="headerlink" href="#module-paramap.base" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="paramap.base.BaseField">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.base.</code><code class="sig-name descname">BaseField</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.base.BaseField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseType" title="paramap.base.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseType</span></code></a></p>
+<p>Base class for fields</p>
+<dl class="py method">
+<dt id="paramap.base.BaseField.clean">
+<code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.base.BaseField.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>All values are valid by default</p>
+</dd></dl>
+<dl class="py method">
+<dt id="paramap.base.BaseField.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.base.BaseField.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves literal value</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.base.BaseType">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.base.</code><code class="sig-name descname">BaseType</code><a class="headerlink" href="#paramap.base.BaseType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents base type class that resolves values with identity.</p>
+<dl class="py method">
+<dt id="paramap.base.BaseType.clean">
+<code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.base.BaseType.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>All values are valid by default</p>
+</dd></dl>
+<dl class="py method">
+<dt id="paramap.base.BaseType.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.base.BaseType.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves literal value</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.base.DeclarativeFieldsMetaclass">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.base.</code><code class="sig-name descname">DeclarativeFieldsMetaclass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">bases</span></em>, <em class="sig-param"><span class="n">attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.base.DeclarativeFieldsMetaclass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
+<p>Collects declared fields in .base_fields attribute.</p>
+</dd></dl>
+</div>
+<div class="section" id="module-paramap.exceptions">
+<span id="paramap-exceptions-module"></span><h2>paramap.exceptions module<a class="headerlink" href="#module-paramap.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="paramap.exceptions.ValidationError">
+<em class="property">exception </em><code class="sig-prename descclassname">paramap.exceptions.</code><code class="sig-name descname">ValidationError</code><a class="headerlink" href="#paramap.exceptions.ValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+</div>
+<div class="section" id="module-paramap.fields">
+<span id="paramap-fields-module"></span><h2>paramap.fields module<a class="headerlink" href="#module-paramap.fields" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="paramap.fields.Any">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Any</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.fields.Field" title="paramap.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.fields.Field</span></code></a></p>
+<p>Field resolving with any value</p>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.fields.Bool">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Bool</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.fields.Field" title="paramap.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.fields.Field</span></code></a></p>
+<p>Field resolving with boolean value</p>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.fields.Field">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Field</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseField" title="paramap.base.BaseField"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseField</span></code></a></p>
+<p>Basic field</p>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.fields.Float">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Float</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.fields.Field" title="paramap.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.fields.Field</span></code></a></p>
+<p>Field resolving with float value</p>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.fields.Integer">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Integer</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.fields.Field" title="paramap.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.fields.Field</span></code></a></p>
+<p>Field resolving with integer value</p>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.fields.List">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">List</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.List" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.fields.Field" title="paramap.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.fields.Field</span></code></a></p>
+<p>Represents a collection of objects</p>
+<dl class="py method">
+<dt id="paramap.fields.List.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.List.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves literal value</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.fields.Map">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Map</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.fields.Field" title="paramap.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.fields.Field</span></code></a></p>
+<p>Resolves values with a map</p>
+<dl class="py method">
+<dt id="paramap.fields.Map.get_map">
+<code class="sig-name descname">get_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Map.get_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="paramap.fields.Map.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Map.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves literal value</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.fields.Nested">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Nested</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Nested" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseField" title="paramap.base.BaseField"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseField</span></code></a></p>
+<p>Field that resolves with MapObject</p>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.fields.String">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">String</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.String" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.fields.Field" title="paramap.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.fields.Field</span></code></a></p>
+<p>Field resolving with sting value</p>
+</dd></dl>
+</div>
+<div class="section" id="module-paramap.types">
+<span id="paramap-types-module"></span><h2>paramap.types module<a class="headerlink" href="#module-paramap.types" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="paramap.types.AnyType">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.types.</code><code class="sig-name descname">AnyType</code><a class="headerlink" href="#paramap.types.AnyType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseType" title="paramap.base.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseType</span></code></a></p>
+<p>Resolves with any value</p>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.types.BoolType">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.types.</code><code class="sig-name descname">BoolType</code><a class="headerlink" href="#paramap.types.BoolType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseType" title="paramap.base.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseType</span></code></a></p>
+<p>Resolves to bool</p>
+<dl class="py method">
+<dt id="paramap.types.BoolType.clean">
+<code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.BoolType.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Casts value to bool</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.types.FloatType">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.types.</code><code class="sig-name descname">FloatType</code><a class="headerlink" href="#paramap.types.FloatType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseType" title="paramap.base.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseType</span></code></a></p>
+<p>Resolves to float</p>
+<dl class="py method">
+<dt id="paramap.types.FloatType.clean">
+<code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.FloatType.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Casts value to float</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.types.IntegerType">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.types.</code><code class="sig-name descname">IntegerType</code><a class="headerlink" href="#paramap.types.IntegerType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseType" title="paramap.base.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseType</span></code></a></p>
+<p>Resolves to integer</p>
+<dl class="py method">
+<dt id="paramap.types.IntegerType.clean">
+<code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.IntegerType.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Casts value to integer</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.types.MapObject">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.types.</code><code class="sig-name descname">MapObject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parameters</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.MapObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Main map type class meant to be inherited by other classes
+to represent domain objects.</p>
+<p>Resolvers work similar to graphene type classes, and have to follow
+resolve_attributename convention. Resolvers will only be called for
+BaseType(field) attributes.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="s1">'John'</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="s1">'Doe'</span>
+    <span class="n">full_name</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">resolve_full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+        <span class="c1"># parameters variable is a dict passed to constructor</span>
+        <span class="c1"># you can access other attributes to build values here</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_name</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_name</span>
+
+    <span class="k">def</span> <span class="nf">resolve_first_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+        <span class="c1"># this method will not be called, because the self.first_name</span>
+        <span class="c1"># attribute is a str and not a BaseType</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Each resolver gets full access to parameters passed to __init__ method.</p>
+<p>Resolve methods will be called only after all fields without resolvers are set.
+After that, when there is more than one resolver in the class, each of them will
+be called from top to bottom. Remember about it when accessing other attributes.</p>
+<p>Each non nested field can have a default value set in type definition.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="c1"># Represents a person</span>
+    <span class="n">firstName</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'person_first_name'</span><span class="p">)</span>
+    <span class="n">lastName</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'person_last_name'</span><span class="p">)</span>
+    <span class="n">fullName</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">resolve_fullName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+        <span class="c1"># custom resolve method for fullName field</span>
+        <span class="c1"># that uses other fields to build the value</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">firstName</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lastName</span>
+
+<span class="c1"># create person instance with parameters</span>
+<span class="n">person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">'person_first_name'</span><span class="p">:</span> <span class="s1">'John'</span><span class="p">,</span>
+    <span class="s1">'person_last_name'</span><span class="p">:</span> <span class="s1">'Doe'</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># as you can see, fullName field is present in the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="s1">'firstName'</span><span class="p">:</span> <span class="s1">'John'</span><span class="p">,</span>
+    <span class="s1">'lastName'</span><span class="p">:</span> <span class="s1">'Doe'</span><span class="p">,</span>
+    <span class="s1">'fullName'</span><span class="p">:</span> <span class="s1">'John Doe'</span><span class="p">,</span>
+    <span class="s1">'age'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># create person instance with kwargs directly</span>
+<span class="n">person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">firstName</span><span class="o">=</span><span class="s1">'Bobby'</span><span class="p">,</span> <span class="n">lastName</span><span class="o">=</span><span class="s1">'Bob'</span><span class="p">)</span>
+
+<span class="c1"># as you can see, fullName field is present in the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="s1">'firstName'</span><span class="p">:</span> <span class="s1">'Bobby'</span><span class="p">,</span>
+    <span class="s1">'lastName'</span><span class="p">:</span> <span class="s1">'Bob'</span><span class="p">,</span>
+    <span class="s1">'fullName'</span><span class="p">:</span> <span class="s1">'Bobby Bob'</span><span class="p">,</span>
+    <span class="s1">'age'</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt id="paramap.types.MapObject.base_fields">
+<code class="sig-name descname">base_fields</code><em class="property"> = {}</em><a class="headerlink" href="#paramap.types.MapObject.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="paramap.types.MapObject.clean">
+<code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.MapObject.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleans value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#paramap.types.MapObject" title="paramap.types.MapObject"><em>MapObject</em></a>) – value to clean</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>cleaned value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#paramap.types.MapObject" title="paramap.types.MapObject">MapObject</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="paramap.types.MapObject.declared_fields">
+<code class="sig-name descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#paramap.types.MapObject.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="paramap.types.MapObject.resolve">
+<code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.MapObject.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new class instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#paramap.types.MapObject" title="paramap.types.MapObject"><em>MapObject</em></a><em>, </em><em>dict</em><em>]</em>) – map object or dictionary to resolve with</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>new MapObject instance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#paramap.types.MapObject" title="paramap.types.MapObject">MapObject</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="paramap.types.MapObject.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.MapObject.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deep casts current object to a dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary with { field: value } pairs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="paramap.types.StringType">
+<em class="property">class </em><code class="sig-prename descclassname">paramap.types.</code><code class="sig-name descname">StringType</code><a class="headerlink" href="#paramap.types.StringType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseType" title="paramap.base.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseType</span></code></a></p>
+<p>Resolves to string</p>
+<dl class="py method">
+<dt id="paramap.types.StringType.clean">
+<code class="sig-name descname">clean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.StringType.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Casts value to string</p>
+</dd></dl>
+</dd></dl>
+</div>
+<div class="section" id="module-paramap">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-paramap" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="fields.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Fields</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Kamil Biel
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/paramap.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Class Reference</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-paramap.base">paramap.base module</a></li>
+<li><a class="reference internal" href="#module-paramap.exceptions">paramap.exceptions module</a></li>
+<li><a class="reference internal" href="#module-paramap.fields">paramap.fields module</a></li>
+<li><a class="reference internal" href="#module-paramap.types">paramap.types module</a></li>
+<li><a class="reference internal" href="#module-paramap">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+  </body>
+</html>

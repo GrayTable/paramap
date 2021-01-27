@@ -1,0 +1,387 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Resolvers" href="resolvers.html" /><link rel="prev" title="Paramap(Proof of Concept)" href="index.html" />
+
+    <meta name="generator" content="sphinx-3.4.3, furo 2020.12.30.beta24"/>
+        <title>Quickstart - Paramap documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=33d2fc4f3f180ec1ffc6524e273e21d7d58cbe49">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=26485485040e7aaf717c13fd0188a5ad2c2deb60">
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script defer="defer" src="_static/jquery.js"></script>
+    <script defer="defer" src="_static/underscore.js"></script>
+    <script defer="defer" src="_static/doctools.js"></script>
+    <script defer src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Paramap  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Paramap  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fields.html">Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paramap.html">Class Reference</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="quickstart">
+<span id="quickstart-overview"></span><h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>Let’s consider you have a following parameter dictionary that gives us some information about a smart house system:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">'HOME_ID'</span> <span class="p">:</span> <span class="mi">213</span><span class="p">,</span>
+   <span class="s1">'HOME_TEMPERATURE'</span><span class="p">:</span> <span class="mf">24.6</span><span class="p">,</span> <span class="c1"># in Celsius</span>
+   <span class="s1">'HOME_HUMIDITY'</span><span class="p">:</span> <span class="mf">80.6</span><span class="p">,</span>
+   <span class="s1">'HOME_GATE_ACTIVE'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># can the gate be opened?</span>
+   <span class="s1">'HOME_GATE_OPENED'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1"># is the gate opened?</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Object, or a nested dictionary representation could be a more useful way to represent this data.</p>
+<div class="section" id="creating-data-schema">
+<h2>Creating data schema<a class="headerlink" href="#creating-data-schema" title="Permalink to this headline">¶</a></h2>
+<p>You cloud parse above parameters with <code class="docutils literal notranslate"><span class="pre">paramap</span></code> by creating <code class="docutils literal notranslate"><span class="pre">Home</span></code>, <code class="docutils literal notranslate"><span class="pre">Environment</span></code>, and <code class="docutils literal notranslate"><span class="pre">Gate</span></code> objects:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">paramap.scalars</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Bool</span>
+
+<span class="k">class</span> <span class="nc">Gate</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="n">opened</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_GATE_OPENED'</span><span class="p">)</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_GATE_ACTIVE'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Environment</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_TEMPERATURE'</span><span class="p">)</span>
+    <span class="n">humidity</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_HUMIDITY'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Home</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_ID'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, all classes inheriting from <code class="docutils literal notranslate"><span class="pre">MapObject</span></code> have a set <a class="reference internal" href="fields.html#fields-overview"><span class="std std-ref">Fields</span></a>, ie. <code class="docutils literal notranslate"><span class="pre">Gate</span></code> has <code class="docutils literal notranslate"><span class="pre">opened</span></code> and <code class="docutils literal notranslate"><span class="pre">active</span></code> fields. Keyword argument <code class="docutils literal notranslate"><span class="pre">param</span></code> passed on field creation determines which parameter should be used to resolve the value.</p>
+<p>With the above implementation, we can already create objects with previously defined parameters and access their values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">home</span> <span class="o">=</span> <span class="n">Home</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">home</span><span class="o">.</span><span class="n">id</span>
+<span class="go">213</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gate</span><span class="o">=</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gate</span><span class="o">.</span><span class="n">opened</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span><span class="o">.</span><span class="n">temperature</span>
+<span class="go">24.6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="go">{ 'temperature': 24.6, 'humidity': 80.6 }</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nesting-objects">
+<h2>Nesting objects<a class="headerlink" href="#nesting-objects" title="Permalink to this headline">¶</a></h2>
+<p>The main functionality of Paramap is being able to easily create nested object representations of flat parameter dictionaries. Currently  <code class="docutils literal notranslate"><span class="pre">Environment</span></code> and <code class="docutils literal notranslate"><span class="pre">Gate</span></code> are not related to <code class="docutils literal notranslate"><span class="pre">Home</span></code>. We can use <a class="reference internal" href="fields.html#fields-nested"><span class="std std-ref">Nested Field</span></a> to create the relationship:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">paramap.scalars</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">Nested</span>
+
+<span class="k">class</span> <span class="nc">Gate</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="n">opened</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_GATE_OPENED'</span><span class="p">)</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_GATE_ACTIVE'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Environment</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_TEMPERATURE'</span><span class="p">)</span>
+    <span class="n">humidity</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_HUMIDITY'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Home</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_ID'</span><span class="p">)</span>
+    <span class="n">gate</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">Gate</span><span class="p">)</span>
+    <span class="n">environment</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">Environment</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">home</span> <span class="o">=</span> <span class="n">Home</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">home</span><span class="o">.</span><span class="n">environment</span><span class="o">.</span><span class="n">humidity</span>
+<span class="go">80.6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">home</span><span class="o">.</span><span class="n">gate</span><span class="o">.</span><span class="n">opened</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">home</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="go">{</span>
+<span class="go">   'id': 213,</span>
+<span class="go">   'environment': {</span>
+<span class="go">      'temperature': 24.6,</span>
+<span class="go">      'humidity': 80.6,</span>
+<span class="go">   },</span>
+<span class="go">   'gate': {</span>
+<span class="go">      'opened': False,</span>
+<span class="go">      'active': True,</span>
+<span class="go">   }</span>
+<span class="go">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">home</span><span class="o">.</span><span class="n">gate</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="go">{</span>
+<span class="go">    'opened': False,</span>
+<span class="go">    'active': True,</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="temperature-conversion-with-resolvers">
+<h2>Temperature conversion with resolvers<a class="headerlink" href="#temperature-conversion-with-resolvers" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we need to perform some special logic when parsing data. As an example, let’s assume our sensors read temperature in Celsius,
+but we need temperature expressed in Fahrenheit in our final result.</p>
+<p>To solve this problem Paramap introduces a useful feature called <a class="reference internal" href="resolvers.html#resolvers-overview"><span class="std std-ref">Resolvers</span></a>, which will be familiar to people that used <code class="docutils literal notranslate"><span class="pre">graphene</span></code> before.</p>
+<p>Let’s modify our <cite>Environment</cite> class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">paramap.scalars</span> <span class="kn">import</span> <span class="n">Float</span>
+
+<span class="k">class</span> <span class="nc">Environment</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_TEMPERATURE'</span><span class="p">)</span>
+    <span class="n">humidity</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_HUMIDITY'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">resolve_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        value - resolved from paramater</span>
+<span class="sd">        parameters - parameters dict(in case other values are needed)</span>
+<span class="sd">        """</span>
+        <span class="c1"># convert value to Fahrenheit</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
+</pre></div>
+</div>
+<p>As you can see, we’ve added a <code class="docutils literal notranslate"><span class="pre">resolve_temperature</span></code> method. It will be used to determine final value for <code class="docutils literal notranslate"><span class="pre">temperature</span></code> field. You can resolve any field this way, you just have to ensure that resolver name matches the field’s name(eg. <code class="docutils literal notranslate"><span class="pre">resolve_active</span></code> for active field).</p>
+<p>Every resolver method gets <code class="docutils literal notranslate"><span class="pre">parameters</span></code> object passed as the first argument, which is the same object you’ve passed in on <code class="docutils literal notranslate"><span class="pre">MapObject</span></code> creation.</p>
+<p>Resolvers are being called from top to bottom, remember it when trying to access other values using resolvers.</p>
+</div>
+<div class="section" id="reusable-temperature-conversion-field">
+<h2>Reusable temperature conversion field<a class="headerlink" href="#reusable-temperature-conversion-field" title="Permalink to this headline">¶</a></h2>
+<p>If you need a reusable field that implements some special logic, you can create fields with custom resolving method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">paramap.fields</span> <span class="kn">import</span> <span class="n">Float</span>
+
+<span class="k">class</span> <span class="nc">Fahrenheit</span><span class="p">(</span><span class="n">Float</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">celsius</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        celsius value comes from parameter value</span>
+<span class="sd">        """</span>
+        <span class="n">fahrenheit</span> <span class="o">=</span> <span class="p">(</span><span class="n">celsius</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">FahrenheitTemp</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Environment</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="sd">"""</span>
+<span class="sd">    Now temperature will be automatically converted to Fahrenheit</span>
+<span class="sd">    """</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">Fahrenheit</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_TEMPERATURE'</span><span class="p">)</span>
+    <span class="n">humidity</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_HUMIDITY'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mapping-values-with-map-field">
+<h2>Mapping values with Map field<a class="headerlink" href="#mapping-values-with-map-field" title="Permalink to this headline">¶</a></h2>
+<p>In some cases you could need a way to enumerate/directly map many different values with a dictionary. For example, let’s suppose that our <cite>Gate</cite> can have many statuses.</p>
+<p>Gate Statuses:</p>
+<ul class="simple">
+<li><p>0 - CLOSED</p></li>
+<li><p>1 - OPENED</p></li>
+<li><p>10 - CLOSING</p></li>
+<li><p>11 - OPENING</p></li>
+<li><p>99 - ERROR</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">paramap.fields</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">Map</span>
+
+<span class="k">class</span> <span class="nc">GateStatus</span><span class="p">(</span><span class="n">Map</span><span class="p">,</span> <span class="n">String</span><span class="p">):</span>
+   <span class="k">def</span> <span class="nf">get_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="p">{</span>
+         <span class="mi">0</span><span class="p">:</span> <span class="s1">'CLOSED'</span><span class="p">,</span>
+         <span class="mi">1</span><span class="p">:</span> <span class="s1">'OPENED'</span><span class="p">,</span>
+         <span class="mi">10</span><span class="p">:</span> <span class="s1">'CLOSING'</span><span class="p">,</span>
+         <span class="mi">11</span><span class="p">:</span> <span class="s1">'OPENING'</span><span class="p">,</span>
+         <span class="mi">99</span><span class="p">:</span> <span class="s1">'ERR'</span><span class="p">,</span>
+     <span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Gate</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+   <span class="n">status</span> <span class="o">=</span> <span class="n">GateStatus</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_GATE_STATUS'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now our <code class="docutils literal notranslate"><span class="pre">status</span></code> field will resolve to string representation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'HOME_GATE_STATUS'</span><span class="p">:</span> <span class="mi">99</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gate</span> <span class="o">=</span> <span class="n">Gate</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gate</span><span class="o">.</span><span class="n">status</span>
+<span class="go">'ERR'</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="resolvers.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Resolvers</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Kamil Biel
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/quickstart.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Quickstart</a><ul>
+<li><a class="reference internal" href="#creating-data-schema">Creating data schema</a></li>
+<li><a class="reference internal" href="#nesting-objects">Nesting objects</a></li>
+<li><a class="reference internal" href="#temperature-conversion-with-resolvers">Temperature conversion with resolvers</a></li>
+<li><a class="reference internal" href="#reusable-temperature-conversion-field">Reusable temperature conversion field</a></li>
+<li><a class="reference internal" href="#mapping-values-with-map-field">Mapping values with Map field</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+  </body>
+</html>
