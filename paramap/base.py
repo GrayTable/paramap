@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 class BaseType(object):
     """
     Represents base type class that resolves values with identity.
@@ -36,6 +38,7 @@ class DeclarativeFieldsMetaclass(type):
     """
     Collects declared fields in .base_fields attribute.
     """
+
     def __new__(mcs, name, bases, attrs):
         # Collect fields from current class and remove them from attrs.
         attrs['declared_fields'] = {
@@ -43,7 +46,7 @@ class DeclarativeFieldsMetaclass(type):
             if isinstance(value, BaseType)
         }
 
-        new_class = super().__new__(mcs, name, bases, attrs)
+        new_class = super(DeclarativeFieldsMetaclass, mcs).__new__(mcs, name, bases, attrs)
 
         # Walk through the MRO.
         declared_fields = {}

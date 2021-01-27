@@ -91,4 +91,4 @@ class Map(Field):
         if mapping:
             value = mapping(value) if callable(mapping) else mapping
 
-        return super().resolve(value)
+        return super(Map, self).resolve(value)
