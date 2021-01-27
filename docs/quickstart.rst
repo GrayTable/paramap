@@ -53,7 +53,7 @@ With the above implementation, we can already create objects with previously def
     >>> home = Home(parameters=parameters)
     >>> home.id
     213
-    >>> gate=(parameters=parameters)
+    >>> gate = Gate(parameters=parameters)
     >>> gate.opened
     False
     >>> environment = Environment(parameters=parameters)

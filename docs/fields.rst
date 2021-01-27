@@ -132,3 +132,51 @@ List Field
     # output: 142
     print(wallet.currencies)
     # output: ['USD', 'EUR', 'PLN']
+
+
+Map Field
+------------------
+
+``Map(type_class, param=None, default=None)`` field, as the name suggests, uses a map to resolve values. Let's say that our wallet has a single `currency` that we want to translate to its full name:
+
+.. code-block:: python
+
+    from param.types import MapObject
+    from param.fields import Integer, String, Map
+
+    class FullNameCurrency(Map, String):
+        def get_map(self):
+            return {
+                'EUR': 'Euro',
+                'PLN': 'Polish Zloty',
+                'USD': 'United States Dollar',
+            }
+
+    class Wallet(MapObject):
+        id = Integer(param='WALLET_ID')
+        currency = FullNameCurrency(String)
+
+
+    parameters = {
+        'WALLET_ID': 142,
+        'WALLET_CURRENCY': 'PLN',
+    }
+
+    wallet = Wallet(parameters=parameters)
+
+    print(wallet.id)
+    # output: 142
+    print(wallet.currency)
+    # output: Polish Zloty
+
+Or we could use a shorthand:
+
+.. code-block:: python
+
+    class Wallet(MapObject):
+        id = Integer(param='WALLET_ID')
+        currency = Map(String, map={
+            'EUR': 'Euro',
+            'PLN': 'Polish Zloty',
+            'USD': 'United States Dollar',
+        })
