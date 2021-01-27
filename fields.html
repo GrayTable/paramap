@@ -241,6 +241,49 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="map-field">
+<h2>Map Field<a class="headerlink" href="#map-field" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Map(type_class,</span> <span class="pre">param=None,</span> <span class="pre">default=None)</span></code> field, as the name suggests, uses a map to resolve values. Let’s say that our wallet has a single <cite>currency</cite> that we want to translate to its full name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">param.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">param.fields</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Map</span>
+
+<span class="k">class</span> <span class="nc">FullNameCurrency</span><span class="p">(</span><span class="n">Map</span><span class="p">,</span> <span class="n">String</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">'EUR'</span><span class="p">:</span> <span class="s1">'Euro'</span><span class="p">,</span>
+            <span class="s1">'PLN'</span><span class="p">:</span> <span class="s1">'Polish Zloty'</span><span class="p">,</span>
+            <span class="s1">'USD'</span><span class="p">:</span> <span class="s1">'United States Dollar'</span><span class="p">,</span>
+        <span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Wallet</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'WALLET_ID'</span><span class="p">)</span>
+    <span class="n">currency</span> <span class="o">=</span> <span class="n">FullNameCurrency</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'WALLET_ID'</span><span class="p">:</span> <span class="mi">142</span><span class="p">,</span>
+    <span class="s1">'WALLET_CURRENCY'</span><span class="p">:</span> <span class="s1">'PLN'</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="c1"># output: 142</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">currency</span><span class="p">)</span>
+<span class="c1"># output: Polish Zloty</span>
+</pre></div>
+</div>
+<p>Or we could use a shorthand:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Wallet</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'WALLET_ID'</span><span class="p">)</span>
+    <span class="n">currency</span> <span class="o">=</span> <span class="n">Map</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="nb">map</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">'EUR'</span><span class="p">:</span> <span class="s1">'Euro'</span><span class="p">,</span>
+        <span class="s1">'PLN'</span><span class="p">:</span> <span class="s1">'Polish Zloty'</span><span class="p">,</span>
+        <span class="s1">'USD'</span><span class="p">:</span> <span class="s1">'United States Dollar'</span><span class="p">,</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
 </div>
 
       </article>
@@ -302,6 +345,7 @@
 <li><a class="reference internal" href="#basic-fields">Basic Fields</a></li>
 <li><a class="reference internal" href="#nested-field">Nested Field</a></li>
 <li><a class="reference internal" href="#list-field">List Field</a></li>
+<li><a class="reference internal" href="#map-field">Map Field</a></li>
 </ul>
 </li>
 </ul>

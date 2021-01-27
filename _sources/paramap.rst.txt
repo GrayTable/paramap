@@ -12,14 +12,6 @@ paramap.base module
    :undoc-members:
    :show-inheritance:
 
-paramap.exceptions module
--------------------------
-
-.. automodule:: paramap.exceptions
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 paramap.fields module
 ---------------------
 
