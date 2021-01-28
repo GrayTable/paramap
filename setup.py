@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='paramap',
-    version='0.0.1',
+    version='0.1.0',
     description='Easily map flat dictionaries to object representations',
     url='git@github.com:GrayTable/paramap.git',
     author='Kamil Biel',
