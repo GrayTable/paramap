@@ -1,13 +1,13 @@
-[![Build Status](https://travis-ci.com/GrayTable/paramap.svg?branch=master)](https://travis-ci.com/GrayTable/paramap)
+[![PyPI version](https://badge.fury.io/py/paramap.svg)](https://badge.fury.io/py/paramap) [![Build Status](https://travis-ci.com/GrayTable/paramap.svg?branch=master)](https://travis-ci.com/GrayTable/paramap)
 
-# Paramap(Proof of Concept)
+# Paramap
 
 Paramap is an easy, declarative way to map flat parameter dictionaries to their object representation.
 
 ## Installation
 
 ```shell
-$ pip install git+ssh://git@github.com/GrayTable/paramap.git
+$ pip install paramap
 ```
 
 ## Docs
