@@ -18,7 +18,7 @@ help:
 github:
 	@rm -rf "$(BUILDDIR)"
 	@make html
-	@mv "$(BUILDDIR)/html/*" "$(DOCS)/"
+	@mv "$(BUILDDIR)/html"/* "$(DOCS)"/
 	@touch "$(DOCS)/.nojekyll"
 
 # Catch-all target: route all unknown targets to Sphinx using the new
