@@ -18,8 +18,6 @@ class MapObjectTest(unittest.TestCase):
         instance = MapObject()
         resolve = instance.resolve(parameters)
 
-
-
     def test_field_resolving_with_parameters(self):
         class TestMap(MapObject):
             test_field_1 = Any(default='test_default_1')

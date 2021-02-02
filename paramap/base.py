@@ -31,8 +31,15 @@ class BaseField(BaseType):
         return self.type_class().clean(value)
 
     def resolve(self, value):
+        if value is None:
+            return self.default
+
         resolve_with = self.type_class().resolve(value)
-        return super(BaseField, self).resolve(resolve_with) or self.default
+
+        if resolve_with is None:
+            return self.default
+
+        return super(BaseField, self).resolve(resolve_with)
 
 
 class DeclarativeFieldsMetaclass(type):
