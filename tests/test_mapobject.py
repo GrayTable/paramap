@@ -230,3 +230,63 @@ class MapObjectTest(unittest.TestCase):
                 }
             }
         })
+
+    def test_required_fields(self):
+        class DoubleNested(MapObject):
+            test_field_1 = Any(default='test_default_1')
+            test_field_2 = Any(param='test_param_2', default='test_default_2', required=True)
+            test_field_3 = Any(param='test_param_3', required=True)
+            test_field_4 = Any(param='test_param_4', required=True)
+            test_field_5 = Any(param='test_param_5', required=True)
+            test_field_6 = Any(param='test_param_6')
+
+
+        class NestedMap(MapObject):
+            test_field_1 = Any(default='test_default_1')
+            test_field_2 = Any(param='test_param_2', required=True)
+            test_field_3 = Any(param='test_param_3', default='test_default_3')
+            test_field_4 = List(Any)
+            test_double_nested = Nested(DoubleNested)
+
+            def resolve_test_field_2(self, value, parameters):
+                # resolvers should have access to other fields
+                return self.test_field_1
+
+            def resolve_test_field_4(self, value, parameters):
+                return [
+                    'list_item_1',
+                    'list_item_2',
+                    'list_item_3',
+                ]
+
+        class TestMap(MapObject):
+            test_nested = Nested(NestedMap)
+            test_field_change_required_status = Any(param='test_param_not_required', required=True)
+
+            def __init__(self, *args, **kwargs):
+                super(TestMap, self).__init__(*args, **kwargs)
+
+                # conditional requirement change
+                self.base_fields['test_field_change_required_status'].required = False
+
+            def resolve_test_nested(self, value, parameters):
+                return NestedMap(
+                    parameters=parameters,
+                    test_field_1='test_field_1_resolved'
+                )
+
+        required_parameters = TestMap().required_parameters
+
+        self.assertTrue({
+            'test_param_2',
+            'test_param_3',
+            'test_param_4',
+            'test_param_5',
+        } <= required_parameters)
+
+        optional_parameters = TestMap().optional_parameters
+
+        self.assertTrue({
+            'test_param_6',
+            'test_param_not_required',
+        } <= optional_parameters)

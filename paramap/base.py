@@ -1,5 +1,5 @@
-from collections import OrderedDict
-
+from collections import OrderedDict, defaultdict
+import warnings
 
 class BaseType(object):
     """
@@ -22,10 +22,17 @@ class BaseField(BaseType):
     """
     Base class for fields
     """
-    def __init__(self, type_class, param=None, default=None):
+    def __init__(self, type_class, param=None, default=None, required=False):
         self.type_class = type_class
         self.param = param
         self.default = default
+        self.required = required
+
+        if self.default and self.required:
+            warnings.warn(
+                'Warning, you are using both `default` and `required` kwargs on '
+                '%s field.' % self.__class__.__name__,
+            )
 
     def clean(self, value):
         return self.type_class().clean(value)
@@ -49,7 +56,7 @@ class DeclarativeFieldsMetaclass(type):
 
     def __new__(mcs, name, bases, attrs):
         # Collect fields from current class and remove them from attrs.
-        attrs['declared_fields'] = {
+        attrs['base_fields'] = {
             key: attrs.pop(key) for key, value in list(attrs.items())
             if isinstance(value, BaseType)
         }
@@ -57,16 +64,17 @@ class DeclarativeFieldsMetaclass(type):
         new_class = super(DeclarativeFieldsMetaclass, mcs).__new__(mcs, name, bases, attrs)
 
         # Walk through the MRO.
-        declared_fields = {}
+        base_fields = {}
+
         for base in reversed(new_class.__mro__):
             # Collect fields from base class.
-            if hasattr(base, 'declared_fields'):
-                declared_fields.update(base.declared_fields)
+            if hasattr(base, 'base_fields'):
+                base_fields.update(base.base_fields)
 
             for attr, value in base.__dict__.items():
-                if value is None and attr in declared_fields:
-                    declared_fields.pop(attr)
+                if value is None and attr in base_fields:
+                    base_fields.pop(attr)
 
-        new_class.base_fields = declared_fields
+        new_class.base_fields = base_fields
 
         return new_class

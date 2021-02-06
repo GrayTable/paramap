@@ -152,8 +152,11 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             parameters (dict, optional): a dictionary with { field: value } pairs. Defaults to {}.
             kwargs (dict): directly initialized fields
         """
+
         if not parameters:
             parameters = {}
+
+        self._all_parameters = set() # all field parameters used in this map object
 
         self._init_with_fields(parameters=parameters, initial=kwargs)
 
@@ -165,7 +168,6 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             initial (dict, optional): initial values passed as kwargs SomeType(field_1='some_value').
 
         """
-
         # Pending resolvers are used after all other values
         # have been set, to make it possible to use them
         # in the resolver function body
@@ -183,6 +185,12 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             if issubclass(field.type_class, MapObject):
                 value = field.type_class(parameters)
             else:
+                if field.param:
+                    # add parameter used in field to all parameters
+                    # of this map object, it will be later used to
+                    # determine required na optional parameters
+                    self._all_parameters.add(field.param)
+
                 value = field.resolve(parameters.get(field.param))
 
             resolver = getattr(self, 'resolve_' + key, None)
@@ -231,15 +239,6 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             # if map type, traverse all fields
             value = getattr(obj, key, None)
 
-            if issubclass(value.__class__, MapObject):
-                # if the value is another map object,
-                # cast to dict
-                value = value.to_dict()
-
-            # in case the resulting value is another iterable, or a
-            # simple type value, we want to make sure it is being
-            # cast to dict(otherwise members of lists could not be
-            # casted)
             result[key] = self._recursive_to_dict(value)
 
         return result
@@ -268,3 +267,49 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             MapObject: cleaned value
         """
         return value
+
+    @property
+    def required_parameters(self):
+        """
+        Returns a set of required parameters
+
+        Returns:
+            set: required parameters names
+        """
+        result = set()
+
+        for field in self.base_fields.values():
+            if issubclass(field.type_class, MapObject):
+                # resolve nested map objects required parameters
+                # and update result
+                nested = field.type_class().required_parameters
+                result.update(nested)
+                continue
+
+            if field.param and field.required:
+                # if field has parameter and is required
+                # add parameter to the result
+                result.add(field.param)
+
+        return result
+
+    @property
+    def optional_parameters(self):
+        """
+        Returns a set of optional parameters
+
+        Returns:
+            set: optional parameters names
+        """
+        required_parameters = self.required_parameters
+        result = self._all_parameters.difference(required_parameters)
+
+        for field in self.base_fields.values():
+            if issubclass(field.type_class, MapObject):
+                result.update({
+                    param for param in
+                    field.type_class().optional_parameters
+                    if param not in required_parameters
+                })
+
+        return result
