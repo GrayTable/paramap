@@ -27,7 +27,7 @@ You cloud parse above parameters with ``paramap`` by creating ``Home``, ``Enviro
 .. code-block:: python
 
     from paramap.types import MapObject
-    from paramap.scalars import Integer, Float, Bool
+    from paramap.fields import Integer, Float, Bool
 
     class Gate(MapObject):
         opened = Bool(param='HOME_GATE_OPENED')
@@ -71,7 +71,7 @@ The main functionality of Paramap is being able to easily create nested object r
 .. code-block:: python
 
     from paramap.types import MapObject
-    from paramap.scalars import Integer, Float, Bool, Nested
+    from paramap.fields import Integer, Float, Bool, Nested
 
     class Gate(MapObject):
         opened = Bool(param='HOME_GATE_OPENED')
@@ -125,7 +125,7 @@ Let's modify our `Environment` class:
 .. code-block:: python
 
     from paramap.types import MapObject
-    from paramap.scalars import Float
+    from paramap.fields import Float
 
     class Environment(MapObject):
         temperature = Float(param='HOME_TEMPERATURE')

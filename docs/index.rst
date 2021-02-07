@@ -21,6 +21,7 @@ Take a look at :ref:`Quickstart Overview` section to start using Paramap.
    :caption: Contents:
 
    quickstart
+   mapobject
    resolvers
    fields
    paramap
