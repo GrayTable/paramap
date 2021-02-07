@@ -18,7 +18,8 @@ Take a look at :ref:`Quickstart Overview` section to start using Paramap.
 
 .. toctree::
    :maxdepth: 4
-   :caption: Contents:
+   :caption: Docs:
+   :hidden:
 
    quickstart
    mapobject
@@ -26,7 +27,11 @@ Take a look at :ref:`Quickstart Overview` section to start using Paramap.
    fields
    paramap
 
+.. toctree::
+   :caption: Development:
+   :hidden:
 
+   GitHub Repository <https://github.com/GrayTable/paramap>
 
 
 

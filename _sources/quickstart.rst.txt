@@ -24,6 +24,7 @@ Creating data schema
 
 You cloud parse above parameters with ``paramap`` by creating ``Home``, ``Environment``, and ``Gate`` objects:
 
+
 .. code-block:: python
 
     from paramap.types import MapObject
