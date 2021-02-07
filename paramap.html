@@ -114,6 +114,7 @@
   <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapobject.html">MapObject</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolvers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fields.html">Fields</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Class Reference</a></li>
@@ -140,7 +141,7 @@
 <span id="paramap-base-module"></span><h2>paramap.base module<a class="headerlink" href="#module-paramap.base" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="paramap.base.BaseField">
-<em class="property">class </em><code class="sig-prename descclassname">paramap.base.</code><code class="sig-name descname">BaseField</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.base.BaseField" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramap.base.</code><code class="sig-name descname">BaseField</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">required</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.base.BaseField" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseType" title="paramap.base.BaseType"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseType</span></code></a></p>
 <p>Base class for fields</p>
 <dl class="py method">
@@ -193,7 +194,7 @@
 </dd></dl>
 <dl class="py class">
 <dt id="paramap.fields.Field">
-<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Field</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Field" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">Field</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">required</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.Field" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#paramap.base.BaseField" title="paramap.base.BaseField"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.base.BaseField</span></code></a></p>
 <p>Basic field</p>
 </dd></dl>
@@ -211,7 +212,7 @@
 </dd></dl>
 <dl class="py class">
 <dt id="paramap.fields.List">
-<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">List</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.List" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">paramap.fields.</code><code class="sig-name descname">List</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_class</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">required</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.fields.List" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#paramap.fields.Field" title="paramap.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">paramap.fields.Field</span></code></a></p>
 <p>Represents a collection of objects</p>
 <dl class="py method">
@@ -380,10 +381,46 @@ be called from top to bottom. Remember about it when accessing other attributes.
 </dd>
 </dl>
 </dd></dl>
-<dl class="py attribute">
-<dt id="paramap.types.MapObject.declared_fields">
-<code class="sig-name descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#paramap.types.MapObject.declared_fields" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="py method">
+<dt id="paramap.types.MapObject.optional_parameters">
+<em class="property">property </em><code class="sig-name descname">optional_parameters</code><a class="headerlink" href="#paramap.types.MapObject.optional_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of optional parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>optional parameters names</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="paramap.types.MapObject.parameters">
+<em class="property">property </em><code class="sig-name descname">parameters</code><a class="headerlink" href="#paramap.types.MapObject.parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all parameters involved in value resolving and information whether
+they are required or optional.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Bool }): a dictionary containing { parameter_name: is_required } key and value pairs.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict({ String</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="paramap.types.MapObject.required_parameters">
+<em class="property">property </em><code class="sig-name descname">required_parameters</code><a class="headerlink" href="#paramap.types.MapObject.required_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a set of required parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>required parameters names</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
 <dl class="py method">
 <dt id="paramap.types.MapObject.resolve">
 <code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paramap.types.MapObject.resolve" title="Permalink to this definition">¶</a></dt>

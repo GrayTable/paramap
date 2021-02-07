@@ -114,6 +114,7 @@
   <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapobject.html">MapObject</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolvers</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Fields</a></li>
 <li class="toctree-l1"><a class="reference internal" href="paramap.html">Class Reference</a></li>
@@ -150,7 +151,7 @@
 </ul>
 <div class="section" id="field">
 <h2>Field<a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Field(type_class,</span> <span class="pre">param=None,</span> <span class="pre">default=None)</span></code> is the most basic respresentation of field functionality. All other, type specific fields are simply an abstraction on top of it. It takes mandatory <code class="docutils literal notranslate"><span class="pre">type_class</span></code> argument when being initialized, which designates what type class it should use when resolving final value.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Field(type_class,</span> <span class="pre">param=None,</span> <span class="pre">default=None,</span> <span class="pre">required=False)</span></code> is the most basic respresentation of field functionality. All other, type specific fields are simply an abstraction on top of it. It takes mandatory <code class="docutils literal notranslate"><span class="pre">type_class</span></code> argument when being initialized, which designates what type class it should use when resolving final value.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">param</span> <span class="kn">import</span> <span class="n">fields</span>
 <span class="kn">from</span> <span class="nn">param.types</span> <span class="kn">import</span> <span class="n">IntegerType</span>
 
@@ -161,7 +162,7 @@
 <span class="n">integer_field</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Argument <code class="docutils literal notranslate"><span class="pre">type_class</span></code> is only mandatory for <code class="docutils literal notranslate"><span class="pre">Field</span></code>, <code class="docutils literal notranslate"><span class="pre">Nested</span></code>, <code class="docutils literal notranslate"><span class="pre">Map</span></code> and <code class="docutils literal notranslate"><span class="pre">List</span></code> classes.</p>
+<p>Argument <code class="docutils literal notranslate"><span class="pre">type_class</span></code> is only mandatory for <code class="docutils literal notranslate"><span class="pre">Field</span></code>, <code class="docutils literal notranslate"><span class="pre">Nested</span></code>, <code class="docutils literal notranslate"><span class="pre">Map</span></code> and <code class="docutils literal notranslate"><span class="pre">List</span></code> classes. You can also pass <cite>required</cite> keyword argument when constructing field, to later get information about required and optional parameters. You can read more about it here.</p>
 </div>
 <div class="section" id="basic-fields">
 <h2>Basic Fields<a class="headerlink" href="#basic-fields" title="Permalink to this headline">¶</a></h2>

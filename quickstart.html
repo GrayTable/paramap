@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js">
   <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Resolvers" href="resolvers.html" /><link rel="prev" title="Paramap(Proof of Concept)" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="MapObject" href="mapobject.html" /><link rel="prev" title="Paramap(Proof of Concept)" href="index.html" />
 
     <meta name="generator" content="sphinx-3.4.3, furo 2020.12.30.beta24"/>
         <title>Quickstart - Paramap documentation</title>
@@ -114,6 +114,7 @@
   <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapobject.html">MapObject</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolvers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fields.html">Fields</a></li>
 <li class="toctree-l1"><a class="reference internal" href="paramap.html">Class Reference</a></li>
@@ -148,7 +149,7 @@
 <h2>Creating data schema<a class="headerlink" href="#creating-data-schema" title="Permalink to this headline">¶</a></h2>
 <p>You cloud parse above parameters with <code class="docutils literal notranslate"><span class="pre">paramap</span></code> by creating <code class="docutils literal notranslate"><span class="pre">Home</span></code>, <code class="docutils literal notranslate"><span class="pre">Environment</span></code>, and <code class="docutils literal notranslate"><span class="pre">Gate</span></code> objects:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
-<span class="kn">from</span> <span class="nn">paramap.scalars</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Bool</span>
+<span class="kn">from</span> <span class="nn">paramap.fields</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Bool</span>
 
 <span class="k">class</span> <span class="nc">Gate</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
     <span class="n">opened</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_GATE_OPENED'</span><span class="p">)</span>
@@ -182,7 +183,7 @@
 <h2>Nesting objects<a class="headerlink" href="#nesting-objects" title="Permalink to this headline">¶</a></h2>
 <p>The main functionality of Paramap is being able to easily create nested object representations of flat parameter dictionaries. Currently  <code class="docutils literal notranslate"><span class="pre">Environment</span></code> and <code class="docutils literal notranslate"><span class="pre">Gate</span></code> are not related to <code class="docutils literal notranslate"><span class="pre">Home</span></code>. We can use <a class="reference internal" href="fields.html#fields-nested"><span class="std std-ref">Nested Field</span></a> to create the relationship:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
-<span class="kn">from</span> <span class="nn">paramap.scalars</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">Nested</span>
+<span class="kn">from</span> <span class="nn">paramap.fields</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">Nested</span>
 
 <span class="k">class</span> <span class="nc">Gate</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
     <span class="n">opened</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_GATE_OPENED'</span><span class="p">)</span>
@@ -230,7 +231,7 @@ but we need temperature expressed in Fahrenheit in our final result.</p>
 <p>To solve this problem Paramap introduces a useful feature called <a class="reference internal" href="resolvers.html#resolvers-overview"><span class="std std-ref">Resolvers</span></a>, which will be familiar to people that used <code class="docutils literal notranslate"><span class="pre">graphene</span></code> before.</p>
 <p>Let’s modify our <cite>Environment</cite> class:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
-<span class="kn">from</span> <span class="nn">paramap.scalars</span> <span class="kn">import</span> <span class="n">Float</span>
+<span class="kn">from</span> <span class="nn">paramap.fields</span> <span class="kn">import</span> <span class="n">Float</span>
 
 <span class="k">class</span> <span class="nc">Environment</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
     <span class="n">temperature</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'HOME_TEMPERATURE'</span><span class="p">)</span>
@@ -315,12 +316,12 @@ but we need temperature expressed in Fahrenheit in our final result.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="resolvers.html">
+          <a class="next-page" href="mapobject.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Resolvers</div>
+                <div class="title">MapObject</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>

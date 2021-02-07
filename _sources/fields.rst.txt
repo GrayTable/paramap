@@ -23,7 +23,7 @@ Paramap uses ``fields`` as a way to represent data. Every subclass of ``paramap.
 Field
 ------
 
-``Field(type_class, param=None, default=None)`` is the most basic respresentation of field functionality. All other, type specific fields are simply an abstraction on top of it. It takes mandatory ``type_class`` argument when being initialized, which designates what type class it should use when resolving final value.
+``Field(type_class, param=None, default=None, required=False)`` is the most basic respresentation of field functionality. All other, type specific fields are simply an abstraction on top of it. It takes mandatory ``type_class`` argument when being initialized, which designates what type class it should use when resolving final value.
 
 .. code-block:: python
 
@@ -36,7 +36,7 @@ Field
 
     integer_field = fields.Integer()
 
-Argument ``type_class`` is only mandatory for ``Field``, ``Nested``, ``Map`` and ``List`` classes.
+Argument ``type_class`` is only mandatory for ``Field``, ``Nested``, ``Map`` and ``List`` classes. You can also pass `required` keyword argument when constructing field, to later get information about required and optional parameters. You can read more about it here.
 
 
 
