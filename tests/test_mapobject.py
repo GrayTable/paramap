@@ -275,18 +275,32 @@ class MapObjectTest(unittest.TestCase):
                     test_field_1='test_field_1_resolved'
                 )
 
-        required_parameters = TestMap().required_parameters
 
-        self.assertTrue({
+        all_parameters = set(TestMap().parameters.keys())
+
+        self.assertEqual({
             'test_param_2',
             'test_param_3',
             'test_param_4',
             'test_param_5',
-        } <= required_parameters)
+            'test_param_6',
+            'test_param_not_required',
+        }, all_parameters)
+
+        required_parameters = TestMap().required_parameters
+
+        self.assertEqual({
+            'test_param_2',
+            'test_param_3',
+            'test_param_4',
+            'test_param_5',
+        }, required_parameters)
 
         optional_parameters = TestMap().optional_parameters
 
-        self.assertTrue({
+        self.assertEqual({
             'test_param_6',
             'test_param_not_required',
-        } <= optional_parameters)
+        }, optional_parameters)
+
+        self.assertEqual(required_parameters.union(optional_parameters), all_parameters)
