@@ -4,4 +4,5 @@ __all__ = [
     'types',
     'fields',
     'base',
+    'registry',
 ]
