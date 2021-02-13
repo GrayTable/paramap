@@ -230,6 +230,40 @@ class MapObjectTest(unittest.TestCase):
                 }
             }
         })
+    
+    def test_to_dict_skip_none(self):
+        class TestMap(MapObject):
+            test_field_1 = Any()
+            test_field_2 = Any()
+
+            def resolve_test_field_2(self, *args, **kwargs):
+                return 'not_none'
+        
+        test_map = TestMap()
+
+        self.assertTrue(hasattr(test_map, 'test_field_1'))
+        self.assertTrue(hasattr(test_map, 'test_field_2'))
+
+        dictionary = test_map.to_dict()
+
+        self.assertNotIn('test_field_1', dictionary.keys())
+        self.assertIn('test_field_2', dictionary.keys())
+        self.assertEqual(dictionary.get('test_field_2'), 'not_none')
+
+
+        dictionary = test_map.to_dict(skip_none=True)
+
+        self.assertNotIn('test_field_1', dictionary.keys())
+        self.assertIn('test_field_2', dictionary.keys())
+        self.assertEqual(dictionary.get('test_field_2'), 'not_none')
+
+
+        dictionary = test_map.to_dict(skip_none=False)
+
+        self.assertIn('test_field_1', dictionary.keys())
+        self.assertIsNone(dictionary.get('test_field_1'))
+        self.assertIn('test_field_2', dictionary.keys())
+        self.assertEqual(dictionary.get('test_field_2'), 'not_none')
 
     def test_required_fields(self):
         class DoubleNested(MapObject):

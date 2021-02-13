@@ -200,41 +200,45 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             resolved_value = resolver()
             setattr(self, attr, resolved_value)
 
-    def to_dict(self):
+    def to_dict(self, skip_none=True):
         """Deep casts current object to a dictionary
 
         Returns:
             dict: dictionary with { field: value } pairs
         """
-        return self._recursive_to_dict(obj=self)
+        def recursive_to_dict(obj=None):
+            """Recursively casts object to a dictionary
 
-    def _recursive_to_dict(self, obj=None):
-        """Recursively casts object to a dictionary
+            Args:
+                obj (any): object to be casted. Defaults to None.
 
-        Args:
-            obj (any): object to be casted. Defaults to None.
+            Returns:
+                dict: dictionary with { field: value } pairs
+            """
+            result = {}
 
-        Returns:
-            dict: dictionary with { field: value } pairs
-        """
-        result = {}
+            if isinstance(obj, list) or isinstance(obj, tuple):
+                # cast iterable members to dict
+                return [recursive_to_dict(obj=o) for o in obj]
 
-        if isinstance(obj, list) or isinstance(obj, tuple):
-            # cast iterable members to dict
-            return [self._recursive_to_dict(obj=o) for o in obj]
+            if not isinstance(obj, MapObject):
+                # if not a map type, return literal value
+                return obj
 
-        if not isinstance(obj, MapObject):
-            # if not a map type, return literal value
-            return obj
+            for name, field in obj.base_fields.items():
+                # if map type, traverse all fields
+                value = getattr(obj, name, None)
+                
+                if skip_none and value is None:
+                    continue
 
-        for name, field in obj.base_fields.items():
-            # if map type, traverse all fields
-            value = getattr(obj, name, None)
+                key = field.verbose_name or name
+                result[key] = recursive_to_dict(obj=value)
 
-            key = field.verbose_name or name
-            result[key] = self._recursive_to_dict(value)
+            return result
 
-        return result
+        return recursive_to_dict(obj=self)
+
 
     def resolve(self, value):
         """Returns a new class instance
