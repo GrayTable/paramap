@@ -22,11 +22,12 @@ class BaseField(BaseType):
     """
     Base class for fields
     """
-    def __init__(self, type_class, param=None, default=None, required=False):
+    def __init__(self, type_class, param=None, default=None, required=False, verbose_name=None):
         self.type_class = type_class
         self.param = param
         self.default = default
         self.required = required
+        self.verbose_name = verbose_name
 
         if self.default and self.required:
             warnings.warn(

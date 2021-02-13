@@ -227,10 +227,11 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             # if not a map type, return literal value
             return obj
 
-        for key in obj.base_fields.keys():
+        for name, field in obj.base_fields.items():
             # if map type, traverse all fields
-            value = getattr(obj, key, None)
+            value = getattr(obj, name, None)
 
+            key = field.verbose_name or name
             result[key] = self._recursive_to_dict(value)
 
         return result

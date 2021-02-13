@@ -185,7 +185,7 @@ class MapObjectTest(unittest.TestCase):
 
         class NestedMap(MapObject):
             test_field_1 = Any(default='test_default_1')
-            test_field_2 = Any(param='test_param_2')
+            test_field_2 = Any(param='test_param_2', verbose_name='verbose_test_field_2_name')
             test_field_3 = Any(param='test_param_3', default='test_default_3')
             test_field_4 = List(Any)
             test_double_nested = Nested(DoubleNested)
@@ -221,7 +221,7 @@ class MapObjectTest(unittest.TestCase):
         self.assertEqual(dictionary, {
             'test_nested': {
                 'test_field_1': 'test_field_1_resolved',
-                'test_field_2': 'test_field_1_resolved',
+                'verbose_test_field_2_name': 'test_field_1_resolved',
                 'test_field_3': 'modified_by_the_resolver',
                 'test_field_4': ['list_item_1', 'list_item_2', 'list_item_3'],
                 'test_double_nested': {
