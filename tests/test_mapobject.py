@@ -230,7 +230,7 @@ class MapObjectTest(unittest.TestCase):
                 }
             }
         })
-    
+
     def test_to_dict_skip_none(self):
         class TestMap(MapObject):
             test_field_1 = Any()
@@ -238,7 +238,7 @@ class MapObjectTest(unittest.TestCase):
 
             def resolve_test_field_2(self, *args, **kwargs):
                 return 'not_none'
-        
+
         test_map = TestMap()
 
         self.assertTrue(hasattr(test_map, 'test_field_1'))

@@ -228,7 +228,7 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
             for name, field in obj.base_fields.items():
                 # if map type, traverse all fields
                 value = getattr(obj, name, None)
-                
+
                 if skip_none and value is None:
                     continue
 

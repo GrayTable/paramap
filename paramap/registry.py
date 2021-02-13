@@ -25,7 +25,7 @@ def get_global_registry():
     global registry
     if not registry:
         registry = Registry()
-    
+
     return registry
 
 
