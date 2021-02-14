@@ -27,8 +27,8 @@ Field
 
 .. code-block:: python
 
-    from param import fields
-    from param.types import IntegerType
+    from paramap import fields
+    from paramap.types import IntegerType
 
     integer_field = fields.Field(type_class=IntegerType)
 
@@ -107,17 +107,16 @@ List Field
 
 .. code-block:: python
 
-    from param.types import MapObject
-    from param.fields import List, Integer, String
+    from paramap.types import MapObject
+    from paramap.fields import List, Integer, String
 
 
     class Wallet(MapObject):
         id = Integer(param='WALLET_ID')
         currencies = List(String)
 
-        def resolve_currencies(self, parameters):
+        def resolve_currencies(self, _, parameters):
             currency_list = parameters.get('WALLET_CURRENCIES')
-
             return currency_list.split(',')
 
 
@@ -133,6 +132,51 @@ List Field
     print(wallet.currencies)
     # output: ['USD', 'EUR', 'PLN']
 
+List of MapObjects
+^^^^^^^^^^^^^^^^^^
+
+You can use ``List`` to directly resolve a list of ``MapObject`` instances by combining it with ``param`` argument:
+
+
+.. code-block:: python
+
+    from paramap.types import MapObject
+    from paramap.fields import List, Integer, String
+
+    class Currency(MapObject):
+        name = String(param='CURRENCY_NAME')
+
+    class Wallet(MapObject):
+        currencies = List(Currency, param='WALLET_CURRENCIES')
+
+    parameters = {
+        'WALLET_CURRENCIES': [
+            {
+                'CURRENCY_NAME': 'USD',
+            },
+            {
+                'CURRENCY_NAME': 'PLN',
+            }
+        ],
+    }
+
+    wallet = Wallet(parameters=parameters)
+
+    print(wallet.currencies)
+    # output: [<__main__.Currency object at ...>, <__main__.Currency object at ...>]
+
+    print(wallet.to_dict())
+    # output:
+    # {
+    #     'currencies': [
+    #         {
+    #             'name': 'USD',
+    #         },
+    #         {
+    #             'name': 'PLN',
+    #         }
+    #     ]
+    # }
 
 Map Field
 ------------------
@@ -141,8 +185,8 @@ Map Field
 
 .. code-block:: python
 
-    from param.types import MapObject
-    from param.fields import Integer, String, Map
+    from paramap.types import MapObject
+    from paramap.fields import Integer, String, Map
 
     class FullNameCurrency(Map, String):
         def get_map(self):
