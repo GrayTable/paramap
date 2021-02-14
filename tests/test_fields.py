@@ -249,3 +249,62 @@ class ListFieldTest(unittest.TestCase):
         ]
 
         self.assertEqual(test_nested_list, field.resolve(test_nested_list))
+
+    def test_nested_list_with_param(self):
+        class NestedListItem(MapObject):
+            test_field_1 = Any(param='test_param_1')
+            test_field_2 = Any(param='test_param_2')
+
+        class TestMap(MapObject):
+            nested_list = List(NestedListItem)
+
+        test_map = TestMap()
+        self.assertEqual(len(test_map.nested_list), 1)
+
+        class TestMap(MapObject):
+            nested_list = List(NestedListItem, param='nested_list_param')
+
+        params = {
+            'nested_list_param': [
+            ]
+        }
+
+        test_map = TestMap(parameters=params)
+        self.assertEqual(len(test_map.nested_list), 0)
+
+        params = {
+            'nested_list_param': [
+                {
+                    'test_param_1': 'first_item_param_value_1',
+                    'test_param_2': 'first_item_param_value_2',
+                }
+            ]
+        }
+
+        test_map = TestMap(parameters=params)
+        self.assertEqual(len(test_map.nested_list), 1)
+        self.assertEqual(test_map.nested_list[0].test_field_1, params['nested_list_param'][0]['test_param_1'])
+        self.assertEqual(test_map.nested_list[0].test_field_2, params['nested_list_param'][0]['test_param_2'])
+
+        params = {
+            'nested_list_param': [
+                {
+                    'test_param_1': 'first_item_param_value_1',
+                    'test_param_2': 'first_item_param_value_2',
+                },
+                {
+                    'test_param_1': 'second_item_param_value_1',
+                    'test_param_2': 'second_item_param_value_2',
+                },
+            ]
+        }
+
+
+
+        test_map = TestMap(parameters=params)
+        self.assertEqual(len(test_map.nested_list), 2)
+
+        self.assertEqual(test_map.nested_list[0].test_field_1, params['nested_list_param'][0]['test_param_1'])
+        self.assertEqual(test_map.nested_list[0].test_field_2, params['nested_list_param'][0]['test_param_2'])
+        self.assertEqual(test_map.nested_list[1].test_field_1, params['nested_list_param'][1]['test_param_1'])
+        self.assertEqual(test_map.nested_list[1].test_field_2, params['nested_list_param'][1]['test_param_2'])

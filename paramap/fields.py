@@ -1,15 +1,26 @@
 from .base import BaseType, BaseField
 from paramap import types
+import warnings
 
 
 class Field(BaseField):
     """
     Basic field
     """
-    pass
+    def resolve(self, value):
+        if not issubclass(self.type_class, types.MapObject):
+            return super(Field, self).resolve(value)
+
+        if isinstance(value, self.type_class):
+            return value
+
+        if not isinstance(value, dict):
+            raise TypeError('Nested fields can only resolve with `dict` or `MapObject` values.')
+
+        return self.type_class(parameters=value)
 
 
-class Nested(BaseField):
+class Nested(Field):
     """
     Field that resolves with MapObject
     """
@@ -65,7 +76,10 @@ class List(Field):
     Represents a collection of objects
     """
     def resolve(self, value):
-        if value is None: return value
+        #TODO: come up with the best default behaviour
+        # for non list values
+        if not isinstance(value, list):
+            return [super(List, self).resolve(value)]
 
         return [
             super(List, self).resolve(item)

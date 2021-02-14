@@ -180,8 +180,8 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
                 setattr(self, key, field.resolve(value))
                 continue
 
-            if issubclass(field.type_class, MapObject):
-                value = field.type_class(parameters)
+            if issubclass(field.type_class, MapObject) and not field.param:
+                value = field.resolve(parameters)
             else:
                 value = field.resolve(parameters.get(field.param))
 
