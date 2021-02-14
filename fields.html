@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js">
   <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Class Reference" href="paramap.html" /><link rel="prev" title="Resolvers" href="resolvers.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Schema Registry" href="registry.html" /><link rel="prev" title="Resolvers" href="resolvers.html" />
 
     <meta name="generator" content="sphinx-3.4.3, furo 2020.12.30.beta24"/>
         <title>Fields - Paramap documentation</title>
@@ -117,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="mapobject.html">MapObject</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resolvers.html">Resolvers</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">Schema Registry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="paramap.html">Class Reference</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development:</span></p>
@@ -156,8 +157,8 @@
 <div class="section" id="field">
 <h2>Field<a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Field(type_class,</span> <span class="pre">param=None,</span> <span class="pre">default=None,</span> <span class="pre">required=False)</span></code> is the most basic respresentation of field functionality. All other, type specific fields are simply an abstraction on top of it. It takes mandatory <code class="docutils literal notranslate"><span class="pre">type_class</span></code> argument when being initialized, which designates what type class it should use when resolving final value.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">param</span> <span class="kn">import</span> <span class="n">fields</span>
-<span class="kn">from</span> <span class="nn">param.types</span> <span class="kn">import</span> <span class="n">IntegerType</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap</span> <span class="kn">import</span> <span class="n">fields</span>
+<span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">IntegerType</span>
 
 <span class="n">integer_field</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">type_class</span><span class="o">=</span><span class="n">IntegerType</span><span class="p">)</span>
 
@@ -218,17 +219,16 @@
 <div class="section" id="list-field">
 <h2>List Field<a class="headerlink" href="#list-field" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">List(type_class,</span> <span class="pre">param=None,</span> <span class="pre">default=None)</span></code> field resolves to a list of any given type. For example we could use <code class="docutils literal notranslate"><span class="pre">List</span></code> like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">param.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
-<span class="kn">from</span> <span class="nn">param.fields</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">paramap.fields</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span>
 
 
 <span class="k">class</span> <span class="nc">Wallet</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'WALLET_ID'</span><span class="p">)</span>
     <span class="n">currencies</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">resolve_currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">resolve_currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
         <span class="n">currency_list</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'WALLET_CURRENCIES'</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">currency_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
 
 
@@ -245,12 +245,55 @@
 <span class="c1"># output: ['USD', 'EUR', 'PLN']</span>
 </pre></div>
 </div>
+<div class="section" id="list-of-mapobjects">
+<h3>List of MapObjects<a class="headerlink" href="#list-of-mapobjects" title="Permalink to this headline">¶</a></h3>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">List</span></code> to directly resolve a list of <code class="docutils literal notranslate"><span class="pre">MapObject</span></code> instances by combining it with <code class="docutils literal notranslate"><span class="pre">param</span></code> argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">paramap.fields</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span>
+
+<span class="k">class</span> <span class="nc">Currency</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="s1">'CURRENCY_NAME'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Wallet</span><span class="p">(</span><span class="n">MapObject</span><span class="p">):</span>
+    <span class="n">currencies</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="n">Currency</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s1">'WALLET_CURRENCIES'</span><span class="p">)</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'WALLET_CURRENCIES'</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">'CURRENCY_NAME'</span><span class="p">:</span> <span class="s1">'USD'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">'CURRENCY_NAME'</span><span class="p">:</span> <span class="s1">'PLN'</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">currencies</span><span class="p">)</span>
+<span class="c1"># output: [&lt;__main__.Currency object at ...&gt;, &lt;__main__.Currency object at ...&gt;]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">wallet</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="c1"># output:</span>
+<span class="c1"># {</span>
+<span class="c1">#     'currencies': [</span>
+<span class="c1">#         {</span>
+<span class="c1">#             'name': 'USD',</span>
+<span class="c1">#         },</span>
+<span class="c1">#         {</span>
+<span class="c1">#             'name': 'PLN',</span>
+<span class="c1">#         }</span>
+<span class="c1">#     ]</span>
+<span class="c1"># }</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="map-field">
 <h2>Map Field<a class="headerlink" href="#map-field" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Map(type_class,</span> <span class="pre">param=None,</span> <span class="pre">default=None)</span></code> field, as the name suggests, uses a map to resolve values. Let’s say that our wallet has a single <cite>currency</cite> that we want to translate to its full name:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">param.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
-<span class="kn">from</span> <span class="nn">param.fields</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Map</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">paramap.types</span> <span class="kn">import</span> <span class="n">MapObject</span>
+<span class="kn">from</span> <span class="nn">paramap.fields</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Map</span>
 
 <span class="k">class</span> <span class="nc">FullNameCurrency</span><span class="p">(</span><span class="n">Map</span><span class="p">,</span> <span class="n">String</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">get_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -295,12 +338,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="paramap.html">
+          <a class="next-page" href="registry.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Class Reference</div>
+                <div class="title">Schema Registry</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -349,7 +392,10 @@
 <li><a class="reference internal" href="#field">Field</a></li>
 <li><a class="reference internal" href="#basic-fields">Basic Fields</a></li>
 <li><a class="reference internal" href="#nested-field">Nested Field</a></li>
-<li><a class="reference internal" href="#list-field">List Field</a></li>
+<li><a class="reference internal" href="#list-field">List Field</a><ul>
+<li><a class="reference internal" href="#list-of-mapobjects">List of MapObjects</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#map-field">Map Field</a></li>
 </ul>
 </li>
