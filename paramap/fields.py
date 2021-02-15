@@ -75,9 +75,28 @@ class List(Field):
     """
     Represents a collection of objects
     """
+    def __init__(self, *args, **kwargs):
+        super(List, self).__init__(*args, **kwargs)
+
+        if self.default is not None and not isinstance(self.default, list):
+            raise TypeError('List field default value has to be a list or None.')
+
     def resolve(self, value):
-        #TODO: come up with the best default behaviour
-        # for non list values
+        """Resolves list field value
+
+        If value is None, field will resolve with default value.
+        If value is not iterable, field will resolve with single item list with value inside
+        Otherwise resolve each item of a list
+
+        Args:
+            value (any): value to resolve with
+
+        Returns:
+            list or None
+        """
+        if value is None:
+            return super(List, self).resolve(value)
+
         if not isinstance(value, list):
             return [super(List, self).resolve(value)]
 

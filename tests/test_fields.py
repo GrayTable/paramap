@@ -236,6 +236,22 @@ class ListFieldTest(unittest.TestCase):
         test_scalar_list = [1, 2, 3, 4, 5, 6, 'test_value']
         self.assertEqual(test_scalar_list, field.resolve(test_scalar_list))
 
+    def test_resolve_with_none(self):
+        field = List(Any)
+        self.assertIsNone(field.resolve(None))
+
+    def test_resolve_to_default(self):
+        field = List(Any, default=[])
+        self.assertEqual(field.resolve(None), [])
+
+    def resolve_with_non_iterable(self):
+        field = List(Any)
+        resolved_with = field.resolve(5)
+
+        self.assertIsInstance(resolved_with, list)
+        self.assertIn(5, resolved_with)
+        self.assertEqual(1, resolved_with)
+
     def test_resolve_map_objects_with_object_list(self):
         class TestMap(MapObject):
             test_field_1 = Any()
@@ -298,8 +314,6 @@ class ListFieldTest(unittest.TestCase):
                 },
             ]
         }
-
-
 
         test_map = TestMap(parameters=params)
         self.assertEqual(len(test_map.nested_list), 2)
