@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import patch
 
-from paramap import registry
-from paramap.types import MapObject
+from paramap import registry, fields
+from paramap.types import MapObject, StringType
 
 
 class RegistryTest(unittest.TestCase):
@@ -59,3 +59,43 @@ class RegistryTest(unittest.TestCase):
 
         for schema in local_registry:
             self.assertIn(schema, [LocalTestMap, LocalTestMap2])
+
+    def test_registry_parameters(self):
+        local_registry = registry.Registry()
+
+        common_parameter = fields.Parameter(StringType, param='TEST_PARAMETER', required=True)
+
+        @registry.register(local_registry)
+        class TestOne(MapObject):
+            common = common_parameter
+            test_field = fields.String(param='TEST_TWO_PARAMETER', required=True)
+
+        @registry.register(local_registry)
+        class TestTwoNested(MapObject):
+            test_field = fields.String(param='TEST_TWO_PARAMETER', required=False)
+            test_field_not_required = fields.String(param='TEST_THREE_PARAMETER', required=False)
+
+        @registry.register(local_registry)
+        class TestTwo(MapObject):
+            common = common_parameter
+
+        parameters = local_registry.parameters
+        required_parameters = local_registry.required_parameters
+        optional_parameters = local_registry.optional_parameters
+
+        print('REQUIRED_PARAMETERS', required_parameters)
+
+        self.assertTrue({
+            'TEST_PARAMETER',
+            'TEST_TWO_PARAMETER',
+            'TEST_THREE_PARAMETER',
+        } == set(parameters))
+
+        self.assertTrue({
+            'TEST_PARAMETER',
+            'TEST_TWO_PARAMETER',
+        } == set(required_parameters))
+
+        self.assertTrue({
+            'TEST_THREE_PARAMETER',
+        } == set(optional_parameters))
