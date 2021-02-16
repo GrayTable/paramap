@@ -1,6 +1,7 @@
 from collections import OrderedDict, defaultdict
 import warnings
 
+
 class BaseType(object):
     """
     Represents base type class that resolves values with identity.
@@ -22,12 +23,14 @@ class BaseField(BaseType):
     """
     Base class for fields
     """
-    def __init__(self, type_class, param=None, default=None, required=False, verbose_name=None):
+    def __init__(self, type_class, param=None, default=None, required=False, 
+            verbose_name=None, description=None):
         self.type_class = type_class
         self.param = param
         self.default = default
         self.required = required
         self.verbose_name = verbose_name
+        self.description = description
 
         if self.default and self.required:
             warnings.warn(

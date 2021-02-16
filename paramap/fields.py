@@ -19,6 +19,54 @@ class Field(BaseField):
 
         return self.type_class(parameters=value)
 
+    @property
+    def parameter(self):
+        """
+        If the field relies on parameter, returns Parameter object
+        """
+        if not self.param: return None
+
+        return types.ParameterType(
+            name=self.param,
+            type_class=self.type_class,
+            required=self.required,
+            description=self.description,
+        )
+
+
+class Parameter(Field):
+    """
+    Field that requires param keyword argument. The use case would be defining
+    parameters outside of MapObject definition, to be able to quickly swap
+    type classes and parameter names across the whole data schema.
+
+    Ofcourse it could be done with other fields, but this class allows you to avoid
+    mistakes and clearly states its purpose.
+
+    Example:
+        ::
+
+        # parameters.py
+
+        from paramap.fields import Parameter
+        from paramap.types import StringType
+
+        first_name_parameter_field = fields.Parameter(StringType, param='FIRST_NAME', default='John Doe')
+
+        # schema.py
+
+        from parameters import first_name_parameter_field
+
+        class Person(MapObject):
+            firstName = first_name_parameter_field
+
+    """
+    def __init__(self, *args, param=None, **kwargs):
+        if not param:
+            raise ValueError('`param` keyword argument is required for parameter fields')
+
+        super(Parameter, self).__init__(*args, param, **kwargs)
+
 
 class Nested(Field):
     """

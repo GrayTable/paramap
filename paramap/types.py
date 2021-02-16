@@ -68,6 +68,24 @@ class BoolType(BaseType):
         return bool(value)
 
 
+class ParameterType:
+    """
+    Comparable parameter object used for parameter resolving
+    """
+    def __init__(self, name, type_class, required=False, description=None):
+        self.name = name
+        self.type_class = type_class
+        self.required = required
+        self.description = description
+
+    def __repr__(self):
+        return (f'Parameter(name={self.__class__.__name__}, required={self.required}, '
+                'description={self.description})')
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+
 class MapObject(metaclass=DeclarativeFieldsMetaclass):
     """
     Main map type class meant to be inherited by other classes
@@ -268,11 +286,10 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
     @property
     def parameters(self):
         """
-        Returns all parameters involved in value resolving and information whether
-        they are required or optional.
+        Returns all parameters used in MapObject definition including nested objects.
 
         Returns:
-            dict({ String: Bool }): a dictionary containing { parameter_name: is_required } key and value pairs.
+            dict({ String: Parameter }): a dictionary containing { parameter_name: Parameter } key and value pairs.
         """
         result = {}
 
@@ -282,16 +299,18 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
                 # resolve nested map objects required parameters
                 # and update result
                 nested_parameters = {
-                    param: is_required for param, is_required in
-                    field.type_class().parameters.items()
-                    if result.get(param) is None or is_required
+                    parameter.name: parameter for parameter in
+                    field.type_class().parameters.values()
+                    if result.get(parameter.name) is None or parameter.required
                 }
 
                 result.update(nested_parameters)
                 continue
 
-            if field.param:
-                result[field.param] = field.required
+            field_parameter = field.parameter
+
+            if field_parameter:
+                result[field_parameter.name] = field_parameter
 
         return result
 
@@ -301,9 +320,9 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
         Returns a set of required parameters
 
         Returns:
-            set: required parameters names
+            dict: required parameters
         """
-        return { param for param, is_required in self.parameters.items() if is_required }
+        return { parameter.name: parameter for parameter in self.parameters.values() if parameter.required }
 
     @property
     def optional_parameters(self):
@@ -311,6 +330,6 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
         Returns a set of optional parameters
 
         Returns:
-            set: optional parameters names
+            dict: optional parameters
         """
-        return { param for param, is_required in self.parameters.items() if not is_required }
+        return { parameter.name: parameter for parameter in self.parameters.values() if not parameter.required }

@@ -321,7 +321,7 @@ class MapObjectTest(unittest.TestCase):
             'test_param_not_required',
         }, all_parameters)
 
-        required_parameters = TestMap().required_parameters
+        required_parameters = set(TestMap().required_parameters.keys())
 
         self.assertEqual({
             'test_param_2',
@@ -330,7 +330,7 @@ class MapObjectTest(unittest.TestCase):
             'test_param_5',
         }, required_parameters)
 
-        optional_parameters = TestMap().optional_parameters
+        optional_parameters = set(TestMap().optional_parameters.keys())
 
         self.assertEqual({
             'test_param_6',
@@ -338,3 +338,43 @@ class MapObjectTest(unittest.TestCase):
         }, optional_parameters)
 
         self.assertEqual(required_parameters.union(optional_parameters), all_parameters)
+
+    def test_define_common_field_outside_of_mapobject(self):
+        common_field = Any(default='test')
+
+        class TestMapOne(MapObject):
+            common = common_field
+
+        class TestMapTwo(MapObject):
+            common = common_field
+
+        test_one = TestMapOne()
+        test_two = TestMapTwo()
+
+        self.assertEqual(test_one.common, 'test')
+        self.assertEqual(test_one.common, test_two.common)
+
+    def test_define_common_field_with_param_outside_of_mapobject(self):
+        common_field = Any(param='TEST_PARAM')
+
+        class TestMapOne(MapObject):
+            common = common_field
+
+        class TestMapTwo(MapObject):
+            common = common_field
+
+        parameters = {
+            'TEST_PARAM': 'test',
+        }
+
+        test_one = TestMapOne(parameters=parameters)
+        test_two = TestMapTwo(parameters=parameters)
+
+        self.assertEqual(test_one.common, 'test')
+        self.assertEqual(test_one.common, test_two.common)
+
+        test_one = TestMapOne(parameters=parameters)
+        test_two = TestMapTwo(parameters={})
+
+        self.assertEqual(test_one.common, 'test')
+        self.assertNotEqual(test_one.common, test_two.common)
