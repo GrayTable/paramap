@@ -1,4 +1,5 @@
 import unittest
+from datetime import datetime
 from unittest.mock import patch
 
 from paramap.types import MapObject, StringType, Parameter
@@ -12,6 +13,7 @@ from paramap.fields import (
     Map,
     List,
     Nested,
+    Date,
 )
 
 
@@ -363,3 +365,19 @@ class ListFieldTest(unittest.TestCase):
         self.assertEqual(test_map.nested_list[0].test_field_2, params['nested_list_param'][0]['test_param_2'])
         self.assertEqual(test_map.nested_list[1].test_field_1, params['nested_list_param'][1]['test_param_1'])
         self.assertEqual(test_map.nested_list[1].test_field_2, params['nested_list_param'][1]['test_param_2'])
+
+
+class DateFieldTest(unittest.TestCase):
+
+    def test_resolve(self):
+        field = Date()
+
+        date = datetime.strptime('2020-02-02', '%Y-%m-%d')
+
+        date_string = field.resolve(date)
+        self.assertEqual(date_string, '2020-02-02')
+
+        field = Date(format='%d-%m-%Y')
+
+        date_string = field.resolve(date)
+        self.assertEqual(date_string, '02-02-2020')

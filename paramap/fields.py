@@ -150,3 +150,16 @@ class Map(Field):
             value = mapping(value) if callable(mapping) else mapping
 
         return super(Map, self).resolve(value)
+
+
+class Date(Field):
+    """
+    Resolves to string that represents a date
+    """
+    def __init__(self, format='%Y-%m-%d', **kwargs):
+        self.format = format
+        super(Date, self).__init__(types.DateStringType, **kwargs)
+
+    def resolve(self, value):
+        date_string = value.strftime(self.format)
+        return super(Date, self).resolve(date_string)

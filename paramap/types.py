@@ -68,6 +68,13 @@ class BoolType(BaseType):
         return bool(value)
 
 
+class DateStringType(StringType):
+    """
+    Resolves to date string
+    """
+    pass
+
+
 class Parameter:
     """
     Comparable parameter object used for parameter resolving
