@@ -378,3 +378,4 @@ class MapObjectTest(unittest.TestCase):
 
         self.assertEqual(test_one.common, 'test')
         self.assertNotEqual(test_one.common, test_two.common)
+

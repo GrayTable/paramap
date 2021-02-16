@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from paramap.types import MapObject, StringType
+from paramap.types import MapObject, StringType, Parameter
 from paramap.fields import (
     Field,
     Any,
@@ -12,13 +12,12 @@ from paramap.fields import (
     Map,
     List,
     Nested,
-    Parameter,
 )
 
 
 class FieldTest(unittest.TestCase):
 
-    def test_parameter(self):
+    def test_parameter_property(self):
         field = Field(
             StringType,
             param='TEST_PARAM',
@@ -32,6 +31,28 @@ class FieldTest(unittest.TestCase):
         self.assertEqual(StringType, parameter.type_class)
         self.assertTrue(parameter.required)
         self.assertEqual(field.description, parameter.description)
+
+    def test_init_with_parameter(self):
+        parameter = Parameter(name='TEST_PARAMETER')
+
+        field = Field(StringType, param=parameter)
+
+        self.assertEqual(field.param, parameter.name)
+        self.assertFalse(field.required)
+
+        field = Field(StringType, param=parameter, required=True)
+        self.assertEqual(field.param, parameter.name)
+        self.assertTrue(field.required)
+
+        parameter.required = True
+        field = Field(StringType, param=parameter, required=False)
+        self.assertEqual(field.param, parameter.name)
+        self.assertTrue(field.required)
+
+        parameter.type_class = Any
+
+        with self.assertRaises(ValueError):
+            Field(StringType, param=parameter)
 
 
 class AnyFieldTest(unittest.TestCase):
@@ -342,13 +363,3 @@ class ListFieldTest(unittest.TestCase):
         self.assertEqual(test_map.nested_list[0].test_field_2, params['nested_list_param'][0]['test_param_2'])
         self.assertEqual(test_map.nested_list[1].test_field_1, params['nested_list_param'][1]['test_param_1'])
         self.assertEqual(test_map.nested_list[1].test_field_2, params['nested_list_param'][1]['test_param_2'])
-
-
-class ParameterFieldTest(unittest.TestCase):
-
-    def test_param_kwargs_is_required(self):
-
-        with self.assertRaises(ValueError):
-            field = Parameter()
-
-        field = Parameter(param='TEST_PARAM')

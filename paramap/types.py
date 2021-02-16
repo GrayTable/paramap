@@ -68,11 +68,11 @@ class BoolType(BaseType):
         return bool(value)
 
 
-class ParameterType:
+class Parameter:
     """
     Comparable parameter object used for parameter resolving
     """
-    def __init__(self, name, type_class, required=False, description=None):
+    def __init__(self, name, type_class=None, required=False, description=None):
         self.name = name
         self.type_class = type_class
         self.required = required

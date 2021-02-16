@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch
 
 from paramap import registry, fields
-from paramap.types import MapObject, StringType
+from paramap.types import MapObject, Parameter
 
 
 class RegistryTest(unittest.TestCase):
@@ -63,11 +63,11 @@ class RegistryTest(unittest.TestCase):
     def test_registry_parameters(self):
         local_registry = registry.Registry()
 
-        common_parameter = fields.Parameter(StringType, param='TEST_PARAMETER', required=True)
+        common_parameter = Parameter(name='TEST_PARAMETER', required=True)
 
         @registry.register(local_registry)
         class TestOne(MapObject):
-            common = common_parameter
+            common = fields.String(param=common_parameter)
             test_field = fields.String(param='TEST_TWO_PARAMETER', required=True)
 
         @registry.register(local_registry)
@@ -77,13 +77,11 @@ class RegistryTest(unittest.TestCase):
 
         @registry.register(local_registry)
         class TestTwo(MapObject):
-            common = common_parameter
+            common = fields.String(param=common_parameter)
 
         parameters = local_registry.parameters
         required_parameters = local_registry.required_parameters
         optional_parameters = local_registry.optional_parameters
-
-        print('REQUIRED_PARAMETERS', required_parameters)
 
         self.assertTrue({
             'TEST_PARAMETER',

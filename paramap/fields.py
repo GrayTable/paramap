@@ -7,6 +7,17 @@ class Field(BaseField):
     """
     Basic field
     """
+    def __init__(self, type_class, param=None, required=False, description=None, **kwargs):
+        if isinstance(param, types.Parameter):
+            if param.type_class and type_class != param.type_class:
+                raise ValueError('Parameter type is not the same as field type.')
+
+            required = required or param.required
+            description = description or param.description
+            param = param.name
+
+        super(Field, self).__init__(type_class, param=param, required=required, description=description, **kwargs)
+
     def resolve(self, value):
         if not issubclass(self.type_class, types.MapObject):
             return super(Field, self).resolve(value)
@@ -26,46 +37,12 @@ class Field(BaseField):
         """
         if not self.param: return None
 
-        return types.ParameterType(
+        return types.Parameter(
             name=self.param,
             type_class=self.type_class,
             required=self.required,
             description=self.description,
         )
-
-
-class Parameter(Field):
-    """
-    Field that requires param keyword argument. The use case would be defining
-    parameters outside of MapObject definition, to be able to quickly swap
-    type classes and parameter names across the whole data schema.
-
-    Ofcourse it could be done with other fields, but this class allows you to avoid
-    mistakes and clearly states its purpose.
-
-    Example:
-        ::
-
-        # parameters.py
-
-        from paramap.fields import Parameter
-        from paramap.types import StringType
-
-        first_name_parameter_field = fields.Parameter(StringType, param='FIRST_NAME', default='John Doe')
-
-        # schema.py
-
-        from parameters import first_name_parameter_field
-
-        class Person(MapObject):
-            firstName = first_name_parameter_field
-
-    """
-    def __init__(self, *args, param=None, **kwargs):
-        if not param:
-            raise ValueError('`param` keyword argument is required for parameter fields')
-
-        super(Parameter, self).__init__(*args, param, **kwargs)
 
 
 class Nested(Field):
