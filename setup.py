@@ -6,7 +6,7 @@ README = (ROOT / "README.md").read_text()
 
 setup(
     name='paramap',
-    version='0.1.3',
+    version='0.1.4',
     description='Easily map flat dictionaries to object representations',
     long_description=README,
     long_description_content_type="text/markdown",
