@@ -56,6 +56,19 @@ class FieldTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             Field(StringType, param=parameter)
 
+    def test_custom_parameter_type(self):
+        class CustomParameter(Parameter):
+            pass
+
+        parameter = CustomParameter('TEST_PARAMETER')
+
+        field = Field(StringType, param=parameter)
+
+        self.assertIsInstance(parameter, CustomParameter)
+        self.assertTrue(type(parameter) is CustomParameter)
+        self.assertEqual(field.param, parameter.name)
+        self.assertFalse(field.required)
+
 
 class AnyFieldTest(unittest.TestCase):
 

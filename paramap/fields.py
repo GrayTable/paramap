@@ -8,13 +8,17 @@ class Field(BaseField):
     Basic field
     """
     def __init__(self, type_class, param=None, required=False, description=None, **kwargs):
+        self._parameter = None
+
         if isinstance(param, types.Parameter):
             if param.type_class and type_class != param.type_class:
                 raise ValueError('Parameter type is not the same as field type.')
 
-            required = required or param.required
-            description = description or param.description
-            param = param.name
+            # keep original parameter for .parameter property
+            self._parameter = param
+            required = required or self._parameter.required
+            description = description or self._parameter.description
+            param = self._parameter.name
 
         super(Field, self).__init__(type_class, param=param, required=required, description=description, **kwargs)
 
@@ -37,12 +41,20 @@ class Field(BaseField):
         """
         if not self.param: return None
 
-        return types.Parameter(
+        if self._parameter:
+            self._parameter.required = self.required
+            self._parameter.description = self.description
+
+            return self._parameter
+
+        self._parameter = types.Parameter(
             name=self.param,
             type_class=self.type_class,
             required=self.required,
             description=self.description,
         )
+
+        return self._parameter
 
 
 class Nested(Field):
