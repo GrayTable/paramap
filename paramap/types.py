@@ -30,13 +30,12 @@ class IntegerType(BaseType):
         """
         Casts value to integer
         """
-        if isinstance(value, float):
-            raise ValueError('Value `{}` can not be cast to type `Integer`'.format(value))
-
         try:
             value = int(value)
         except ValueError:
-            raise ValueError('Value `{}` can not be cast to type `Integer`'.format(value))
+            raise ValueError(
+                f'Value `{value}` can not be cast to type `Integer`'
+            )
 
         return value
 

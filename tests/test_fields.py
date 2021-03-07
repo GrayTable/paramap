@@ -143,10 +143,7 @@ class IntegerFieldTest(unittest.TestCase):
 
         self.assertEqual(5, field.clean(5))
         self.assertEqual(5, field.clean('5'))
-
-
-        with self.assertRaises(ValueError):
-            field.clean(5.251)
+        self.assertEqual(5, field.clean(5.2))
 
         with self.assertRaises(ValueError):
             field.clean('test_value')
