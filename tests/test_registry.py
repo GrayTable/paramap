@@ -68,12 +68,17 @@ class RegistryTest(unittest.TestCase):
         @registry.register(local_registry)
         class TestOne(MapObject):
             common = fields.String(param=common_parameter)
-            test_field = fields.String(param='TEST_TWO_PARAMETER', required=True)
+            test_field = fields.String(param='TEST_TWO_PARAMETER',
+                                       required=True)
 
         @registry.register(local_registry)
         class TestTwoNested(MapObject):
-            test_field = fields.String(param='TEST_TWO_PARAMETER', required=False)
-            test_field_not_required = fields.String(param='TEST_THREE_PARAMETER', required=False)
+            test_field = fields.String(param='TEST_TWO_PARAMETER',
+                                       required=False)
+            test_field_not_required = fields.String(
+                param='TEST_THREE_PARAMETER',
+                required=False
+            )
 
         @registry.register(local_registry)
         class TestTwo(MapObject):

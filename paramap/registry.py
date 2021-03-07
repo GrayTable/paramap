@@ -11,7 +11,11 @@ class Registry:
         key = schema_class.__name__
 
         if key in self.schemas.keys():
-            raise ValueError('Schema with name %s already exists in the registry.' % key)
+            raise ValueError(
+                f'Schema with name {key} already '
+                'exists in the registry.'
+            )
+
         self.schemas[schema_class.__name__] = schema_class
 
     @property
@@ -20,7 +24,8 @@ class Registry:
 
         for schema in self.schemas.values():
             schema_parameters = {
-                parameter.name: parameter for parameter in schema().parameters.values()
+                parameter.name: parameter for parameter
+                in schema().parameters.values()
                 if not all_parameters.get(parameter.name) or parameter.required
             }
 

@@ -352,8 +352,14 @@ class ListFieldTest(unittest.TestCase):
 
         test_map = TestMap(parameters=params)
         self.assertEqual(len(test_map.nested_list), 1)
-        self.assertEqual(test_map.nested_list[0].test_field_1, params['nested_list_param'][0]['test_param_1'])
-        self.assertEqual(test_map.nested_list[0].test_field_2, params['nested_list_param'][0]['test_param_2'])
+        self.assertEqual(
+            test_map.nested_list[0].test_field_1,
+            params['nested_list_param'][0]['test_param_1']
+        )
+        self.assertEqual(
+            test_map.nested_list[0].test_field_2,
+            params['nested_list_param'][0]['test_param_2']
+        )
 
         params = {
             'nested_list_param': [
@@ -371,10 +377,22 @@ class ListFieldTest(unittest.TestCase):
         test_map = TestMap(parameters=params)
         self.assertEqual(len(test_map.nested_list), 2)
 
-        self.assertEqual(test_map.nested_list[0].test_field_1, params['nested_list_param'][0]['test_param_1'])
-        self.assertEqual(test_map.nested_list[0].test_field_2, params['nested_list_param'][0]['test_param_2'])
-        self.assertEqual(test_map.nested_list[1].test_field_1, params['nested_list_param'][1]['test_param_1'])
-        self.assertEqual(test_map.nested_list[1].test_field_2, params['nested_list_param'][1]['test_param_2'])
+        self.assertEqual(
+            test_map.nested_list[0].test_field_1,
+            params['nested_list_param'][0]['test_param_1']
+        )
+        self.assertEqual(
+            test_map.nested_list[0].test_field_2,
+            params['nested_list_param'][0]['test_param_2']
+        )
+        self.assertEqual(
+            test_map.nested_list[1].test_field_1,
+            params['nested_list_param'][1]['test_param_1']
+        )
+        self.assertEqual(
+            test_map.nested_list[1].test_field_2,
+            params['nested_list_param'][1]['test_param_2']
+        )
 
 
 class DateFieldTest(unittest.TestCase):

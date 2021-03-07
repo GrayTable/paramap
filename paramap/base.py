@@ -23,8 +23,8 @@ class BaseField(BaseType):
     """
     Base class for fields
     """
-    def __init__(self, type_class, param=None, default=None, required=False, 
-            verbose_name=None, description=None):
+    def __init__(self, type_class, param=None, default=None, required=False,
+                 verbose_name=None, description=None):
         self.type_class = type_class
         self.param = param
         self.default = default
@@ -34,8 +34,8 @@ class BaseField(BaseType):
 
         if self.default and self.required:
             warnings.warn(
-                'Warning, you are using both `default` and `required` kwargs on '
-                '%s field.' % self.__class__.__name__,
+                'Warning, you are using both `default` and `required`'
+                f'kwargs on {self.__class__.__name__} field.'
             )
 
     def clean(self, value):
@@ -65,7 +65,10 @@ class DeclarativeFieldsMetaclass(type):
             if isinstance(value, BaseType)
         }
 
-        new_class = super(DeclarativeFieldsMetaclass, mcs).__new__(mcs, name, bases, attrs)
+        new_class = super(
+            DeclarativeFieldsMetaclass,
+            mcs
+        ).__new__(mcs, name, bases, attrs)
 
         # Walk through the MRO.
         base_fields = {}

@@ -51,7 +51,9 @@ class FloatType(BaseType):
         try:
             value = float(value)
         except ValueError:
-            raise ValueError('Value `{}` can not be cast to type `Float`'.format(value))
+            raise ValueError(
+                f'Value `{value}` can not be cast to type `Float`'
+            )
 
         return value
 
@@ -78,15 +80,19 @@ class Parameter:
     """
     Comparable parameter object used for parameter resolving
     """
-    def __init__(self, name, type_class=None, required=False, description=None):
+    def __init__(self, name, type_class=None, required=False,
+                 description=None):
         self.name = name
         self.type_class = type_class
         self.required = required
         self.description = description
 
     def __repr__(self):
-        return (f'Parameter(name={self.__class__.__name__}, required={self.required}, '
-                'description={self.description})')
+        return (
+            f'Parameter(name={self.__class__.__name__}, '
+            'required={self.required}, '
+            'description={self.description})'
+        )
 
     def __eq__(self, other):
         return self.name == other.name
@@ -115,15 +121,17 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
                     return self.first_name + ' ' + self.last_name
 
                 def resolve_first_name(self, parameters):
-                    # this method will not be called, because the self.first_name
-                    # attribute is a str and not a BaseType
+                    # this method will not be called, because
+                    # the self.first_name attribute is a str
+                    # and not a BaseType
                     return None
 
     Each resolver gets full access to parameters passed to __init__ method.
 
-    Resolve methods will be called only after all fields without resolvers are set.
-    After that, when there is more than one resolver in the class, each of them will
-    be called from top to bottom. Remember about it when accessing other attributes.
+    Resolve methods will be called only after all fields without resolvers are
+    set. After that, when there is more than one resolver in the class, each
+    of them will be called from top to bottom. Remember about it when
+    accessing other attributes.
 
     Each non nested field can have a default value set in type definition.
 
@@ -173,7 +181,8 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
         """Initializes map type instance
 
         Args:
-            parameters (dict, optional): a dictionary with { field: value } pairs. Defaults to {}.
+            parameters (dict, optional): a dictionary with { field: value }
+                                         pairs. Defaults to {}.
             kwargs (dict): directly initialized fields
         """
 
@@ -187,7 +196,7 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
 
         Args:
             parameters (dict): a dictionary with { field: value } pairs.
-            initial (dict, optional): initial values passed as kwargs SomeType(field_1='some_value').
+            initial (dict, optional): initial values passed as kwargs.
 
         """
         # Pending resolvers are used after all other values
@@ -263,12 +272,12 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
 
         return recursive_to_dict(obj=self)
 
-
     def resolve(self, value):
         """Returns a new class instance
 
         Args:
-            value (Union[MapObject, dict]): map object or dictionary to resolve with
+            value (Union[MapObject, dict]): map object or dictionary
+                                            to resolve with
 
         Returns:
             MapObject: new MapObject instance
@@ -292,10 +301,13 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
     @property
     def parameters(self):
         """
-        Returns all parameters used in MapObject definition including nested objects.
+        Returns all parameters used in MapObject definition including
+        nested objects.
 
         Returns:
-            dict({ String: Parameter }): a dictionary containing { parameter_name: Parameter } key and value pairs.
+            dict({ String: Parameter }): a dictionary containing
+                                         { parameter_name: Parameter }
+                                         key and value pairs.
         """
         result = {}
 
@@ -328,7 +340,11 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
         Returns:
             dict: required parameters
         """
-        return { parameter.name: parameter for parameter in self.parameters.values() if parameter.required }
+        return {
+            parameter.name: parameter for parameter
+            in self.parameters.values()
+            if parameter.required
+        }
 
     @property
     def optional_parameters(self):
@@ -338,4 +354,8 @@ class MapObject(metaclass=DeclarativeFieldsMetaclass):
         Returns:
             dict: optional parameters
         """
-        return { parameter.name: parameter for parameter in self.parameters.values() if not parameter.required }
+        return {
+            parameter.name: parameter for parameter
+            in self.parameters.values()
+            if not parameter.required
+        }
