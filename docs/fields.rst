@@ -23,7 +23,7 @@ Paramap uses ``fields`` as a way to represent data. Every subclass of ``paramap.
 Field
 ------
 
-``Field(type_class, param=None, default=None, required=False)`` is the most basic respresentation of field functionality. All other, type specific fields are simply an abstraction on top of it. It takes mandatory ``type_class`` argument when being initialized, which designates what type class it should use when resolving final value.
+``Field(type_class, param=None, default=None, required=False, verbose_name=None)`` is the most basic respresentation of field functionality. All other, type specific fields are simply an abstraction on top of it. It takes mandatory ``type_class`` argument when being initialized, which designates what type class it should use when resolving final value.
 
 .. code-block:: python
 
@@ -36,8 +36,9 @@ Field
 
     integer_field = fields.Integer()
 
-Argument ``type_class`` is only mandatory for ``Field``, ``Nested``, ``Map`` and ``List`` classes. You can also pass `required` keyword argument when constructing field, to later get information about required and optional parameters. You can read more about it here.
+Argument ``type_class`` is only mandatory for ``Field``, ``Nested``, ``Map`` and ``List`` classes. You can also pass `required` keyword argument when constructing field, to later get information about required and optional parameters.
 
+Argument ``verbose_name`` defines how the field will be named when resolved with ``.to_dict(*args, **kwargs)`` method of MapObject.
 
 
 Basic Fields
@@ -103,7 +104,7 @@ we can access the ``Wallet`` owned by a ``Person`` directly from the ``person`` 
 List Field
 ------------------
 
-``List(type_class, param=None, default=None)`` field resolves to a list of any given type. For example we could use ``List`` like this:
+``List(type_class, **kwargs)`` field resolves to a list of any given type. For example we could use ``List`` like this:
 
 .. code-block:: python
 
@@ -181,7 +182,7 @@ You can use ``List`` to directly resolve a list of ``MapObject`` instances by co
 Map Field
 ------------------
 
-``Map(type_class, param=None, default=None)`` field, as the name suggests, uses a map to resolve values. Let's say that our wallet has a single `currency` that we want to translate to its full name:
+``Map(type_class, **kwargs)`` field, as the name suggests, uses a map to resolve values. Let's say that our wallet has a single `currency` that we want to translate to its full name:
 
 .. code-block:: python
 

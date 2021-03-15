@@ -1,18 +1,20 @@
-from .base import BaseType, BaseField
+from .base import BaseField
 from paramap import types
-import warnings
 
 
 class Field(BaseField):
     """
     Basic field
     """
-    def __init__(self, type_class, param=None, required=False, description=None, **kwargs):
+    def __init__(self, type_class, param=None, required=False,
+                 description=None, **kwargs):
         self._parameter = None
 
         if isinstance(param, types.Parameter):
             if param.type_class and type_class != param.type_class:
-                raise ValueError('Parameter type is not the same as field type.')
+                raise ValueError(
+                    'Parameter type is not the same as field type.'
+                )
 
             # keep original parameter for .parameter property
             self._parameter = param
@@ -20,7 +22,8 @@ class Field(BaseField):
             description = description or self._parameter.description
             param = self._parameter.name
 
-        super(Field, self).__init__(type_class, param=param, required=required, description=description, **kwargs)
+        super().__init__(type_class, param=param, required=required,
+                         description=description, **kwargs)
 
     def resolve(self, value):
         if not issubclass(self.type_class, types.MapObject):
@@ -30,7 +33,10 @@ class Field(BaseField):
             return value
 
         if not isinstance(value, dict):
-            raise TypeError('Nested fields can only resolve with `dict` or `MapObject` values.')
+            raise TypeError(
+                'Nested fields can only resolve with '
+                '`dict` or `MapObject` values.'
+            )
 
         return self.type_class(parameters=value)
 
@@ -39,7 +45,8 @@ class Field(BaseField):
         """
         If the field relies on parameter, returns Parameter object
         """
-        if not self.param: return None
+        if not self.param:
+            return None
 
         if self._parameter:
             self._parameter.required = self.required
@@ -62,7 +69,9 @@ class Nested(Field):
     Field that resolves with MapObject
     """
     def __init__(self, type_class, *args, **kwargs):
-        assert issubclass(type_class, types.MapObject), 'Nested fields must resolve with `MapObject` type_class'
+        assert issubclass(type_class, types.MapObject), (
+            'Nested fields must resolve with `MapObject` type_class'
+        )
 
         super(Nested, self).__init__(type_class, *args, **kwargs)
 
@@ -116,13 +125,17 @@ class List(Field):
         super(List, self).__init__(*args, **kwargs)
 
         if self.default is not None and not isinstance(self.default, list):
-            raise TypeError('List field default value has to be a list or None.')
+            raise TypeError(
+                'List field default value has to be a list or None.'
+            )
 
     def resolve(self, value):
         """Resolves list field value
 
         If value is None, field will resolve with default value.
-        If value is not iterable, field will resolve with single item list with value inside
+        If value is not iterable, field will resolve with a single
+        item list with value inside.
+
         Otherwise resolve each item of a list
 
         Args:
